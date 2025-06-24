@@ -34,8 +34,8 @@ https://mchat-lab.surge.sh
 
 - Mobile
 
-![App Screenshot](/preview/img4.png)
-![App Screenshot](/preview/img5.png)
-![App Screenshot](/preview/img6.png)
+![App Screenshot](/preview/img4.jpg)
+![App Screenshot](/preview/img5.jpg)
+![App Screenshot](/preview/img6.jpg)
 
 
