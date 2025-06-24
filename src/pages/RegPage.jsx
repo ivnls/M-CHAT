@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
-import Aviso from "../components/Aviso";
 import { useReg } from "../context/RegContext";
 
 function RegForm() {
@@ -76,7 +75,7 @@ function RegForm() {
                 <input onChange={(e) => {e.target.checked ? setTermos(true) : setTermos(false)}} id="terms" className="h-5 w-5" type="checkbox"></input>
                 <div>
                     <label className="text-white">Concordo com os </label>
-                    <a href="/termos" className="text-blue-400 underline hover:text-blue-500">Termos de Uso</a>
+                    <a href="/termos" className="text-blue-400 underline hover:text-blue-500">Termos</a>
                 </div>    
             </div>
         </div>

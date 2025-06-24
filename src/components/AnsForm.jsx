@@ -25,24 +25,22 @@ function AnsForm() {
         event.preventDefault();
     
         const perguntasNaoRespondidas = [];
-        // Checa nosso estado 'respostas' em vez de procurar no DOM
         for (let i = 0; i < perguntas.length; i++) {
             if (respostas[i] === undefined) {
                 perguntasNaoRespondidas.push(i);
             }
         }
     
-        // Se há perguntas não respondidas, atualize o estado de erros e pare.
         if (perguntasNaoRespondidas.length > 0) {
             const novosErros = {};
             perguntasNaoRespondidas.forEach(index => {
-                novosErros[index] = true; // Marca a pergunta 'index' com um erro
+                novosErros[index] = true; 
             });
             setErros(novosErros);
-            return; // Para a execução da função aqui
+            return;
         }
     
-        // Se tudo foi respondido, limpa os erros e continua
+        //se tudo foi respondido limpa os erros e continua
         setErros({});
     
         let resNotEqual = 0;
@@ -52,7 +50,6 @@ function AnsForm() {
             }
         });
         
-        //MUDAR ISSO (isso pode ser melhorado com Context, mas para manter simples, está ok)
         setScore({ resNotEqual });
         //localStorage.setItem("resNotEqual", resNotEqual);
         navigate("/resultado");
@@ -60,7 +57,7 @@ function AnsForm() {
     
     return(
         <>  
-            <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl px-4 py-8 lg:px-4 lg:py-10 lg:max-w-5xl lg:mx-auto" >
+            <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl mb-8 px-4 py-8 lg:px-4 lg:py-10 lg:max-w-5xl lg:mx-auto" >
                 {perguntas.map((item, index) => {
 
                     //cores de fundo conforme a resposta

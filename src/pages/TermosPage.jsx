@@ -2,13 +2,6 @@ import React from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
-import s1 from "../assets/screenshots/1.png";
-import s2 from "../assets/screenshots/2.png";
-import s3 from "../assets/screenshots/3.png";
-import s4 from "../assets/screenshots/4.png";
-import s5 from "../assets/screenshots/5.png";
-
-
 function TermosPage() {
 
     const navigate = useNavigate();
@@ -41,22 +34,19 @@ function TermosPage() {
             <ul className="list-decimal ml-4">
                 <div>
                     <li>Realizar o registro inicial</li>
-                    <img src={s1}></img>
+                    {/* Adicionar imagens para representação */}
                 </div>
                 <div>
                     <li>Responder as perguntas marcando para cada uma sim ou não, certifique-se de responder todas</li>
-                    <img src={s2}></img>
                 </div>
                 <div>
                     <li>Conclua o questionário</li>
-                    <img src={s3}></img>
                 </div>
                 <div>
                     <li>Você terá o resultado e as orientações aconselhadas</li>
-                    <img src={s4}></img>
                 </div>
             </ul>
-            <p>Dica: Você pode tirar um print do resultado caso tenha que apresentar à um profissional.</p>
+            <p>Dica: Você pode realizar uma caputura de tela do resultado para apresentar à um profissional.</p>
             </div>
 
             <button onClick={retorar} className="mt-2 px-4 mx-auto bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Voltar ao Cadastro</button>

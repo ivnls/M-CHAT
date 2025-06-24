@@ -2,18 +2,22 @@ import React from "react";
 import { useReg } from "../context/RegContext";
 import { useNavigate } from "react-router-dom";
 
-function InfoReg() {
+function InfoReg({ final }) {
 
     const navigate = useNavigate();
+    let finalDate = null;
+
+    if (final != undefined) {
+        finalDate = (
+            <p id="inicio" className="mb-4 bg-green-300 rounded-lg">Avaliação completa em {final}<span className="font-normal"></span></p>
+        );
+    }
 
     const { nomeMae, nomeCrianca, idade, sexo } = useReg();
 
     if (nomeMae === undefined || nomeMae === null) {
         navigate("/");
     }
-
-    const data = new Date();
-    const dataFormatada = data.toLocaleString("pt-BR");
 
     return(
         <div id="dadosConsulta" className="bg-gray-300 text-center rounded-xl pt-4 px-4 m-4 shadow-md mx-auto">
@@ -28,7 +32,7 @@ function InfoReg() {
                     <p id="sexo" className="">Sexo: {sexo}<span className="font-normal"></span></p>
                 </div>
             </div>
-            <p id="inicio" className="mb-4">Início da Consulta: {dataFormatada}<span className="font-normal"></span></p>
+            {finalDate}
         </div>
     );
 }
