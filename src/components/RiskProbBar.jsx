@@ -3,8 +3,7 @@ import { useScore } from "../context/ScoreContext";
 
 function RiskProbBar() {
 
-    const { erros } = useScore('');
-
+    const { erros } = useScore();
 
     let probTextResult = "";
     let probColor = "";
@@ -13,14 +12,14 @@ function RiskProbBar() {
     let recommendationComponent = null;
 
     if (erros < 3) {
-        widthPercentage = "25%";
+        widthPercentage = `${erros * 12.5}%`;
         probTextResult = "Probabilidade da avaliação: Baixo";
         probColor = "#008000";
         recommendationComponent = (
             <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Baixo</h1>
                 <p className="mt-2">Quando a criança obtém uma pontuação de 0 a 2 na escala M-CHAT, o risco de desenvolver o Transtorno do Espectro Autista (TEA) é considerado baixo. Nesses casos:</p>
-                <ul className="list-disc list-inside mt-2 space-y-1">
+                erros * 4.34   <ul className="list-disc list-inside mt-2 space-y-1">
                     <li>É improvável que a criança desenvolva autismo.</li>
                     <li>Não há necessidade de medidas de intervenção imediata.</li>
                     <li>Caso a criança tenha menos de 24 meses, recomenda-se repetir o teste em uma etapa futura, pois o desenvolvimento infantil pode apresentar variações ao longo do tempo.</li>
@@ -28,7 +27,7 @@ function RiskProbBar() {
             </div>
         );
     } else if (erros < 8) {
-        widthPercentage = "60%";
+        widthPercentage = `${erros * 12.5}%`;
         probTextResult = "Probabilidade da avaliação: Moderado";
         probColor = "#FFD700";
         recommendationComponent = (
@@ -43,7 +42,7 @@ function RiskProbBar() {
             </div>
         );
     } else {
-        widthPercentage = "100%";
+        widthPercentage = `100%`;
         probTextResult = "Probabilidade da avaliação: Alto";
         probColor = "#FF0000";
         recommendationComponent = (
@@ -63,7 +62,7 @@ function RiskProbBar() {
         <>
             <p id="prob-text" className="text-white text-lg font-medium mt-4 text-center">{probTextResult}</p>
             
-            <div className="max-w-sm lg:max-w-2xl bg-gray-300 rounded-full h-8 overflow-hidden mt-2 mx-auto">
+            <div className="lg:mx-60 my-6 bg-gray-300 rounded-full h-8 overflow-hidden">
                 <div 
                   id="prob" 
                   className='h-8 rounded-full transition-all duration-500 ease-in-out' 

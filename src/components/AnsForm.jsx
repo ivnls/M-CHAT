@@ -6,7 +6,7 @@ import { useScore } from "../context/ScoreContext";
 
 function AnsForm() {
 
-    const { setScore } = useScore('');
+    const { setScore, setFinalData } = useScore();
 
     const navigate = useNavigate();
                                             //{ 0: true, 1: false, ...}
@@ -23,6 +23,9 @@ function AnsForm() {
     // questionário enviado
     const envioQuestionario = (event) => {
         event.preventDefault();
+
+        const dataDeFinalizacao = new Date().toLocaleString("pt-BR");
+        setFinalData(dataDeFinalizacao);
     
         const perguntasNaoRespondidas = [];
         for (let i = 0; i < perguntas.length; i++) {
@@ -50,7 +53,7 @@ function AnsForm() {
             }
         });
         
-        setScore({ resNotEqual });
+        setScore(resNotEqual);
         //localStorage.setItem("resNotEqual", resNotEqual);
         navigate("/resultado");
     };

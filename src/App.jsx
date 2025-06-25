@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
+
 import { RegProvider } from './context/RegContext';
+import { ScoreProvider } from './context/ScoreContext';
 
 import RegForm from "./pages/RegPage";
 import QuestionarioPage from "./pages/QuestionarioPage";
@@ -8,7 +10,7 @@ import TermosPage from "./pages/TermosPage";
 import CathAllPage from './pages/CathAllPage';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
-import { ScoreProvider } from './context/ScoreContext';
+
 
 
 function App() {

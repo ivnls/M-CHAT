@@ -1,23 +1,20 @@
 import React from "react";
 import { useReg } from "../context/RegContext";
-import { useNavigate } from "react-router-dom";
+import { useScore } from "../context/ScoreContext";
 
-function InfoReg({ final }) {
+function InfoReg() {
 
-    const navigate = useNavigate();
+    const { data } = useScore();
+
     let finalDate = null;
 
-    if (final != undefined) {
+    if (data != undefined) {
         finalDate = (
-            <p id="inicio" className="mb-4 bg-green-300 rounded-lg">Avaliação completa em {final}<span className="font-normal"></span></p>
+            <p id="inicio" className="mb-4 bg-green-300 rounded-lg">Avaliação completa em {data}<span className="font-normal"></span></p>
         );
     }
 
     const { nomeMae, nomeCrianca, idade, sexo } = useReg();
-
-    if (nomeMae === undefined || nomeMae === null) {
-        navigate("/");
-    }
 
     return(
         <div id="dadosConsulta" className="bg-gray-300 text-center rounded-xl pt-4 px-4 m-4 shadow-md mx-auto">

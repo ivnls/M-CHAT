@@ -9,10 +9,8 @@ function ResultadoPage() {
     const data = new Date();
     const dataFormatada = data.toLocaleString("pt-BR");
 
-    
-
     return(
-        <div className="flex justify-center flex-col"> 
+        <div className="flex flex-col"> 
             <Header subtitle={"Resultado"} />
             <InfoReg final={dataFormatada} />
             <RiskProbBar/>
