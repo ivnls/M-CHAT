@@ -98,7 +98,7 @@ function AnsForm() {
 
                             {erros[index] && (
                                 <p className="text-red-800 bg-red-300 py-4 px-1 rounded-lg">
-                                    Responda a esta pergunta
+                                    Responda à pergunta
                                 </p>
                             )}
                         </div>

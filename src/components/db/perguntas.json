@@ -12,43 +12,35 @@
       "resposta": false 
     },
     {
-      "pergunta":
-        "Seu filho gosta de brincar de esconder e mostrar o rosto ou de esconde-esconde?",
+      "pergunta": "Seu filho gosta de brincar de esconder e mostrar o rosto ou de esconde-esconde?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "Seu filho já brincou de faz-de-conta, como, por exemplo, fazer de conta que está falando no telefone ou que está cuidando da boneca, ou qualquer outra brincadeira de faz-de-conta?",
+      "pergunta": "Seu filho já brincou de faz-de-conta, como, por exemplo, fazer de conta que está falando no telefone ou que está cuidando da boneca, ou qualquer outra brincadeira de faz-de-conta?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "Seu filho já usou o dedo indicador dele para apontar, para pedir alguma coisa?",
+      "pergunta": "Seu filho já usou o dedo indicador dele para apontar, para pedir alguma coisa?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "Seu filho já usou o dedo indicador dele para apontar, para indicar interesse em algo?",
+      "pergunta": "Seu filho já usou o dedo indicador dele para apontar, para indicar interesse em algo?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "Seu filho consegue brincar de forma correta com brinquedos pequenos (ex. carros ou blocos), sem apenas colocar na boca, remexer no brinquedo ou deixar o brinquedo cair?",
+      "pergunta": "Seu filho consegue brincar de forma correta com brinquedos pequenos (ex. carros ou blocos), sem apenas colocar na boca, remexer no brinquedo ou deixar o brinquedo cair?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "O seu filho alguma vez trouxe objetos para você (pais) para lhe mostrar este objeto?",
+      "pergunta": "O seu filho alguma vez trouxe objetos para você (pais) para lhe mostrar este objeto?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "O seu filho olha para você no olho por mais de um segundo ou dois?",
+      "pergunta": "O seu filho olha para você no olho por mais de um segundo ou dois?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "O seu filho já pareceu muito sensível ao barulho (ex. tapando os ouvidos)?",
+      "pergunta": "O seu filho já pareceu muito sensível ao barulho (ex. tapando os ouvidos)?",
       "resposta": true
     },
     {
@@ -56,8 +48,7 @@
       "resposta": false 
     },
     {
-      "pergunta":
-        "O seu filho imita você? (ex. você faz expressões/caretas e seu filho imita?)",
+      "pergunta": "O seu filho imita você? (ex. você faz expressões/caretas e seu filho imita?)",
       "resposta": false 
     },
     {
@@ -65,18 +56,19 @@
       "resposta": false 
     },
     {
-      "pergunta":
-        "Se você aponta um brinquedo do outro lado do cômodo, o seu filho olha para ele?",
+      "pergunta": "Se você aponta um brinquedo do outro lado do cômodo, o seu filho olha para ele?",
       "resposta": false 
     },
-    { "pergunta": "Seu filho já sabe andar?", "resposta": false  },
+    { 
+      "pergunta": "Seu filho já sabe andar?",
+      "resposta": false  
+    },
     {
       "pergunta": "O seu filho olha para coisas que você está olhando?",
       "resposta": false 
     },
     {
-      "pergunta":
-        "O seu filho faz movimentos estranhos com os dedos perto do rosto dele?",
+      "pergunta": "O seu filho faz movimentos estranhos com os dedos perto do rosto dele?",
       "resposta": true
     },
     {
@@ -87,15 +79,16 @@
       "pergunta": "Você alguma vez já se perguntou se seu filho é surdo?",
       "resposta": true
     },
-    { "pergunta": "O seu filho entende o que as pessoas dizem?", "resposta": false  },
     {
-      "pergunta":
-        "O seu filho às vezes fica aéreo, “olhando para o nada” ou caminhando sem direção definida?",
+      "pergunta": "O seu filho entende o que as pessoas dizem?",
+      "resposta": false  
+    },
+    {
+      "pergunta": "O seu filho às vezes fica aéreo, “olhando para o nada” ou caminhando sem direção definida?",
       "resposta": true
     },
     {
-      "pergunta":
-        "O seu filho olha para o seu rosto para conferir a sua reação quando vê algo estranho?",
+      "pergunta": "O seu filho olha para o seu rosto para conferir a sua reação quando vê algo estranho?",
       "resposta": false 
     }
 ]

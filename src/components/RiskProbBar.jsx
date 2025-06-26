@@ -19,7 +19,8 @@ function RiskProbBar() {
             <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Baixo</h1>
                 <p className="mt-2">Quando a criança obtém uma pontuação de 0 a 2 na escala M-CHAT, o risco de desenvolver o Transtorno do Espectro Autista (TEA) é considerado baixo. Nesses casos:</p>
-                erros * 4.34   <ul className="list-disc list-inside mt-2 space-y-1">
+                erros * 4.34
+                <ul className="list-disc list-inside mt-2 space-y-1">
                     <li>É improvável que a criança desenvolva autismo.</li>
                     <li>Não há necessidade de medidas de intervenção imediata.</li>
                     <li>Caso a criança tenha menos de 24 meses, recomenda-se repetir o teste em uma etapa futura, pois o desenvolvimento infantil pode apresentar variações ao longo do tempo.</li>
