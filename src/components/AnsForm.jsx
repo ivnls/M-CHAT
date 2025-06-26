@@ -60,7 +60,7 @@ function AnsForm() {
     
     return(
         <>  
-            <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl mb-8 px-4 py-8 lg:px-4 lg:py-10 lg:max-w-5xl lg:mx-auto" >
+            <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl m-4 lg:m-8 px-4 py-8 lg:px-4 lg:py-10 lg:max-w-5xl lg:mx-auto" >
                 {perguntas.map((item, index) => {
 
                     //cores de fundo conforme a resposta

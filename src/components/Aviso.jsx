@@ -12,7 +12,7 @@ function Aviso() {
           <h3 className="text-lg font-medium">Aviso!</h3>
         </div>
         <div className="mt-2 mb-4 text-sm">
-        Como na maioria dos testes de rastreio poderá existir um grande número de falsos positivos, indicando que nem todas as crianças que constam neste questionário irão ser diagnosticadas com esta perturbação. No entanto estes resultados podem apontar para a existência de outras anomalias do desenvolvimento, sendo por isso necessária a avaliação por profissionais desta área.
+        Como na maioria dos testes de rastreio, poderá existir um grande número de falsos positivos, indicando que nem todas as crianças que constam neste questionário irão ser diagnosticadas com esta perturbação. No entanto, estes resultados podem apontar para a existência de outras anomalias do desenvolvimento, sendo por isso necessária a avaliação por profissionais desta área.
         </div>
       </div>
     );
