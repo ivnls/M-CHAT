@@ -4,30 +4,30 @@ const ScoreContext = createContext();
 
 export const ScoreProvider = ({ children }) => {
 
-    const [erros, setErros] = useState(sessionStorage.getItem('erros_mchat'));
-    const [data, setData] = useState(sessionStorage.getItem('datafinal_mchat'));
+    const [finalScore, setFinalScore] = useState(sessionStorage.getItem('score_mchat'));
+    const [conclusionDate, setFinalConclusionDate] = useState(sessionStorage.getItem('conclusionDate_mchat'));
 
-    const setScore = (erros) => {
-        setErros(erros);
+    const setScore = (finalScore) => {
+        setFinalScore(finalScore);
     };
 
-    const setFinalData = (data) => {
-        setData(data);
+    const setConclusionDate = (conclusionDate) => {
+        setFinalConclusionDate(conclusionDate);
     };
 
     const resetScore = () => {
         setScore(null);
         setData(null)
-        sessionStorage.removeItem('erros_mchat');
-        sessionStorage.removeItem('datafinal_mchat');
+        sessionStorage.removeItem('score_mchat');
+        sessionStorage.removeItem('conclusionDate_mchat');
     };
 
     const valor = {
-        erros,
-        data,
+        finalScore,
+        conclusionDate,
         setScore,
-        resetScore,
-        setFinalData
+        setConclusionDate,
+        resetScore
     };
 
     return <ScoreContext.Provider value={valor}>{children}</ScoreContext.Provider>;

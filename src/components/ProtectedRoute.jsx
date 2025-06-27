@@ -5,16 +5,15 @@ import { useScore } from "../context/ScoreContext";
 
 const ProtectedRoute = ({ children }) => {
     const { nomeMae } = useReg();
-    const { erros } = useScore();
+    const { finalScore } = useScore();
     const location = useLocation();
 
-    if (nomeMae === undefined || nomeMae === null) {
+    if (finalScore === undefined || nomeMae === null) {
         return <Navigate to="/" replace />;
     } else if (location.pathname === "/resultado") {
-        if (erros === null) {
+        if (finalScore === null) {
             return <Navigate to="/questionario" replace />;
         }
-       console.log(erros);
     }
 
     return children;

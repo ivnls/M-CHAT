@@ -4,13 +4,13 @@ import { useScore } from "../context/ScoreContext";
 
 function InfoReg() {
 
-    const { data } = useScore();
+    const { conclusionDate } = useScore();
 
     let finalDate = null;
 
-    if (data != undefined) {
+    if (conclusionDate != undefined) {
         finalDate = (
-            <p id="inicio" className="mb-4 bg-green-300 rounded-lg">Avaliação completa em {data}<span className="font-normal"></span></p>
+            <p id="inicio" className="mb-4 bg-green-300 rounded-lg">Avaliação completa em {conclusionDate}<span className="font-normal"></span></p>
         );
     }
 

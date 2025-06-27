@@ -6,7 +6,7 @@ import { useScore } from "../context/ScoreContext";
 
 function AnsForm() {
 
-    const { setScore, setFinalData } = useScore();
+    const { setScore, setConclusionDate } = useScore();
 
     const navigate = useNavigate();
                                             //{ 0: true, 1: false, ...}
@@ -24,8 +24,7 @@ function AnsForm() {
     const envioQuestionario = (event) => {
         event.preventDefault();
 
-        const dataDeFinalizacao = new Date().toLocaleString("pt-BR");
-        setFinalData(dataDeFinalizacao);
+        const finalizationDate = new Date().toLocaleString("pt-BR");
     
         const perguntasNaoRespondidas = [];
         for (let i = 0; i < perguntas.length; i++) {
@@ -53,6 +52,7 @@ function AnsForm() {
             }
         });
         
+        setConclusionDate(finalizationDate);
         setScore(resNotEqual);
         //localStorage.setItem("resNotEqual", resNotEqual);
         navigate("/resultado");
@@ -86,7 +86,7 @@ function AnsForm() {
                                 <label className="text-green-600 font-medium cursor-pointer">Sim</label>
 
                                 <input onChange={() => handleRespostaChange(index, false)}
-                                checked={respostas[index] === false}
+                                checked=  {respostas[index] === false}
                                 id={`q${index}-false`} 
                                 type="radio"
                                 name={`q${index}`}

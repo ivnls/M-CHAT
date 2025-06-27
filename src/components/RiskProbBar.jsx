@@ -1,20 +1,16 @@
 import React from "react";
 import { useScore } from "../context/ScoreContext";
+import ReactSpeedometer from "react-d3-speedometer";
 
 function RiskProbBar() {
 
-    const { erros } = useScore();
+    const { finalScore } = useScore();
 
     let probTextResult = "";
-    let probColor = "";
-    let widthPercentage = "0%";
-    
     let recommendationComponent = null;
 
-    if (erros < 3) {
-        widthPercentage = `${erros * 12.5}%`;
+    if (finalScore < 3) {
         probTextResult = "Probabilidade da avaliação: Baixo";
-        probColor = "#008000";
         recommendationComponent = (
             <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Baixo</h1>
@@ -26,10 +22,8 @@ function RiskProbBar() {
                 </ul>
             </div>
         );
-    } else if (erros < 8) {
-        widthPercentage = `${erros * 12.5}%`;
+    } else if (finalScore < 8) {
         probTextResult = "Probabilidade da avaliação: Moderado";
-        probColor = "#FFD700";
         recommendationComponent = (
             <div id="rec-text-moderado" className="bg-yellow-200 border border-yellow-600 text-yellow-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Moderado</h1>
@@ -42,9 +36,7 @@ function RiskProbBar() {
             </div>
         );
     } else {
-        widthPercentage = `100%`;
         probTextResult = "Probabilidade da avaliação: Alto";
-        probColor = "#FF0000";
         recommendationComponent = (
             <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Alto</h1>
@@ -57,24 +49,29 @@ function RiskProbBar() {
             </div>
         );
     }
+    /*
+    <div className="mx-30 lg:mx-60 my-6 bg-gray-300 rounded-full h-8 overflow-hidden">
+    <div 
+      id="prob" 
+      className='h-8 rounded-full transition-all duration-500 ease-in-out' 
+      style={{
+          width: widthPercentage,
+          backgroundColor: probColor
+      }}
+    ></div>
+    </div>
+    */
 
     return (
-        <>
+        <div className="flex flex-col">
             <p id="prob-text" className="text-white text-lg font-medium mt-4 text-center">{probTextResult}</p>
             
-            <div className="mx-30 lg:mx-60 my-6 bg-gray-300 rounded-full h-8 overflow-hidden">
-                <div 
-                  id="prob" 
-                  className='h-8 rounded-full transition-all duration-500 ease-in-out' 
-                  style={{
-                      width: widthPercentage,
-                      backgroundColor: probColor
-                  }}
-                ></div>
+            <div className="mx-auto pt-8">
+                <ReactSpeedometer minValue={0} maxValue={20} height={250} width={300} value={finalScore} segments={10} startColor="#00AA00" endColor="#FF0000" valueTextFontSize={20} needleColor="#aed6f1"/>
             </div>
 
             {recommendationComponent}
-        </>
+        </div>
     );
 }
 
