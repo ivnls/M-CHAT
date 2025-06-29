@@ -61,6 +61,11 @@ function AnsForm() {
     return(
         <>  
             <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl m-4 lg:m-8 px-4 py-8 lg:px-4 lg:py-10 lg:max-w-5xl lg:mx-auto" >
+                <div className="bg-gray-300 p-4 text-center mb-3 rounded-md font-medium">
+                    <p>Por favor, preencha as questões abaixo sobre como seu filho geralmente é. Por favor, tente responder todas as
+                    questões. Caso o comportamento na questão seja raro (ex. você só observou uma ou duas vezes), por favor, responda
+                    como se seu filho não fizesse o comportamento.</p>
+                </div>
                 {perguntas.map((item, index) => {
 
                     //cores de fundo conforme a resposta
@@ -74,7 +79,7 @@ function AnsForm() {
                     return (
                         <div key={index} id={`container-q${index}`} className="flex flex-col lg:flex-row items-center justify-start gap-6 pl-4 p-4 mb-3 rounded-lg shadow-sm border border-gray-200" style={{backgroundColor: corDeFundo}}>
 
-                            <span className="text-gray-800 text-center text-base font-normal flex-1 lg:text-start lg:order-first">{item.pergunta}</span>
+                            <span className="text-center text-base font-normal flex-1 lg:text-start lg:order-first">{item.pergunta}</span>
 
                             <div className ="flex items-center gap-4 lg:order-last">
                                 <input onChange={() => handleRespostaChange(index, true)}
