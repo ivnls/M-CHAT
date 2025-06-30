@@ -54,7 +54,6 @@ function AnsForm() {
         
         setConclusionDate(finalizationDate);
         setScore(resNotEqual);
-        //localStorage.setItem("resNotEqual", resNotEqual);
         navigate("/resultado");
     };
     

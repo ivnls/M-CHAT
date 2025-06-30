@@ -49,18 +49,6 @@ function RiskProbBar() {
             </div>
         );
     }
-    /*
-    <div className="mx-30 lg:mx-60 my-6 bg-gray-300 rounded-full h-8 overflow-hidden">
-    <div 
-      id="prob" 
-      className='h-8 rounded-full transition-all duration-500 ease-in-out' 
-      style={{
-          width: widthPercentage,
-          backgroundColor: probColor
-      }}
-    ></div>
-    </div>
-    */
 
     return (
         <div className="flex flex-col">

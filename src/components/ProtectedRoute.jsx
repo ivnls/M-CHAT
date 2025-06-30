@@ -10,10 +10,8 @@ const ProtectedRoute = ({ children }) => {
 
     if (finalScore === undefined || nomeMae === null) {
         return <Navigate to="/" replace />;
-    } else if (location.pathname === "/resultado") {
-        if (finalScore === null) {
-            return <Navigate to="/questionario" replace />;
-        }
+    } else if (location.pathname === "/resultado" && finalScore === null) {
+        return <Navigate to="/questionario" replace />;
     }
 
     return children;

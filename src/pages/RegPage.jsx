@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
 import { useReg } from "../context/RegContext";
+import { useScore } from "../context/ScoreContext";
 
 function RegForm() {
 
@@ -10,6 +11,13 @@ function RegForm() {
 
     const navigate = useNavigate();
     const { registrar, resetReg } = useReg();
+    const { resetScore } = useScore();
+
+    useEffect(() => {
+        // limpar dados do registro anterior
+        resetReg();
+        resetScore();
+    }, []);
 
     //termos
     const [termos, setTermos] = useState(false);
@@ -23,6 +31,8 @@ function RegForm() {
     //erros
     const [erroIdade, setErroIdade] = useState("");
     const [erroTermos, setErroTermos] = useState("");
+    const [erroNomeMae, setErroNomeMae] = useState("");
+    const [erroNomeCrianca, setErroNomeCrianca] = useState("");
 
     //só para guardar os dados do formulário em localStorages
     const EnvioDoFormulario = (event) => {
@@ -42,6 +52,27 @@ function RegForm() {
             e++;
         } else {
             setErroIdade("");
+        }
+
+        // /\d/ -> procura numeros em uma string
+        if (/\d/.test(nomeMae)) {
+            setErroNomeMae("Digite um nome válido.");
+            e++;
+        } else if (!nomeMae.includes(" ")) {
+            setErroNomeMae("Digite o nome completo.");
+            e++;
+        } else {
+            setErroNomeMae("");
+        }
+
+        if (/\d/.test(nomeCrianca)) {
+            setErroNomeCrianca("Digite um nome válido.");
+            e++;
+        } else if (!nomeCrianca.includes(" ")) {
+            setErroNomeCrianca("Digite o nome completo.");
+            e++;
+        } else {
+            setErroNomeCrianca("");
         }
 
         if (e > 0) {
@@ -84,9 +115,11 @@ function RegForm() {
 
         <label className="block mb-2 font-medium">Nome da Mãe</label>
         <input onChange={(e) => {setNomeMae(e.target.value)}} type="text" id="nomeMae" className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none" required></input>
+        <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroNomeMae}</p>
 
         <label className="block mt-4 mb-2 font-medium">Nome Completo da Criança</label>
         <input onChange={(e) => {setNomeCrianca(e.target.value)}} type="text" id="nomeCrianca" className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none" required></input>
+        <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroNomeCrianca}</p>
 
         <label className="block mt-4 mb-2 font-medium">Idade em Meses</label>
         <input onChange={(e) => {setIdade(e.target.value)}} type="number" id="idade" className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none" required></input>

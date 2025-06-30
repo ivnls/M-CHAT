@@ -10,7 +10,7 @@ function InfoReg() {
 
     if (conclusionDate != undefined) {
         finalDate = (
-            <p id="inicio" className="mb-4 bg-green-300 rounded-lg">Avaliação completa em {conclusionDate}<span className="font-normal"></span></p>
+            <p id="inicio" className="mb-4 bg-green-400 p-2 rounded-lg">Avaliação completa em {conclusionDate}<span className="font-normal"></span></p>
         );
     }
 
