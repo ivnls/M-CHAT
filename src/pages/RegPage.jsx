@@ -3,20 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
 import { useReg } from "../context/RegContext";
 import { useScore } from "../context/ScoreContext";
+import { useDate } from "../context/DateContext";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 
 function RegForm() {
-
-    //Aqui a página de registro é montada
-    //***Quebrar em componentes
 
     const navigate = useNavigate();
     const { registrar, resetReg } = useReg();
     const { resetScore } = useScore();
+    const { resetDate } = useDate();
 
     useEffect(() => {
         // limpar dados do registro anterior
         resetReg();
         resetScore();
+        resetDate();
     }, []);
 
     //termos
@@ -27,12 +29,16 @@ function RegForm() {
     const [nomeCrianca, setNomeCrianca] = useState("");
     const [idade, setIdade] = useState("");
     const [sexo, setSexo] = useState("Masculino");
+    const [email, setEmail] = useState("");
 
     //erros
     const [erroIdade, setErroIdade] = useState("");
     const [erroTermos, setErroTermos] = useState("");
     const [erroNomeMae, setErroNomeMae] = useState("");
     const [erroNomeCrianca, setErroNomeCrianca] = useState("");
+    const [erroContaGoogle, setErroContaGoogle] = useState("");
+
+    const [emailVerificado, setEmailVerificado] = useState(false);
 
     //só para guardar os dados do formulário em localStorages
     const EnvioDoFormulario = (event) => {
@@ -75,6 +81,11 @@ function RegForm() {
             setErroNomeCrianca("");
         }
 
+        if (!emailVerificado) {
+            setErroContaGoogle("Por favor, faça login com uma conta google.")
+            e++;
+        }
+
         if (e > 0) {
             return;
         }
@@ -84,9 +95,22 @@ function RegForm() {
         setIdade(idade);
         setSexo(sexo);
 
-        registrar({ nomeMae, nomeCrianca, idade, sexo });
+        registrar({ nomeMae, nomeCrianca, idade, sexo, email });
 
         navigate('/questionario');
+    }
+
+
+    const ValidacaoGmail = (credenciais) => {
+        const credenciaisDec = jwtDecode(credenciais.credential);
+        if (credenciaisDec.email_verified) {
+            setEmailVerificado(true);
+            setEmail(credenciaisDec.email);
+            setErroContaGoogle("");
+        } else {
+            erroContaGoogle("Por favor, use outra conta google.")
+        }
+        
     }
 
     return (
@@ -97,7 +121,7 @@ function RegForm() {
 
         <h2 className="text-xl font-semibold mb-4 text-center">Registro</h2>
 
-        <div className="bg-red-700 rounded-md p-5 mb-5">
+        <div className="bg-red-700 rounded-md p-5 mb-5 max-w-md mx-auto">
             <p className="mx-2 text-white">O (M-CHAT) é um breve questionário referente ao desenvolvimento e comportamento utilizado em crianças dos 16 aos 30 meses, com o objetivo de rastrear as perturbações do espectro do autismo (PEA).
             </p>
             <p className="mx-2 mb-3 text-white">Pode ser aplicado tanto numa avaliação periódica de rotina (cuidados primários de saúde), como por profissionais especializados em casos de suspeita. 
@@ -132,8 +156,23 @@ function RegForm() {
             <option value="Feminino">Feminino</option>
         </select>
 
-        <button type="submit" className="mt-6 px-10 bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Enviar</button>
+        <label className="block mt-4 mb-2 font-medium">Login com Google</label>
+        <div className={emailVerificado ? "hidden" : "visible flex justify-center"}>
+            <GoogleLogin theme="filled_blue" shape="pill" text="continue_with" width="280" onSuccess={ValidacaoGmail} />
+        </div>
+
+        <div className={emailVerificado ? "flex justify-center mt-4 gap-1 visible" : "hidden"}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+            </svg>
+                <p>Conta Verificada</p>
+            </div>
+
+        <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroContaGoogle}</p>
+
+        <button type="submit" className="mt-6 px-10 bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Registrar</button>
         </form>
+
         </>
     );
 }

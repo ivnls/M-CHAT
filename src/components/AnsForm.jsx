@@ -55,7 +55,6 @@ function AnsForm() {
 
         if (Object.keys(novosErros).length > 0) {
             setErros(novosErros);
-            alert("Por favor, responda todas as perguntas antes de continuar.");
             return;
         }
 
@@ -147,12 +146,13 @@ function AnsForm() {
                                 />
                                 <label htmlFor={`q${index}-false`} className="text-red-600 font-medium cursor-pointer">Não</label>
                             </div>
-
-                            {erros[index] && (
-                                <p className="text-red-600 text-xs mt-1 w-full text-center lg:text-right lg:order-last">
-                                    Por favor, responda esta pergunta.
-                                </p>
-                            )}
+                            <div>
+                                {erros[index] && (
+                                    <p className="text-red-600 font-semibold mt-1 text-center lg:text-right lg:order-last">
+                                        Por favor, responda esta pergunta.
+                                    </p>
+                                )}
+                            </div>
                         </div>
                     );
                 })}
