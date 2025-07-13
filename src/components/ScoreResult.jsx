@@ -2,7 +2,7 @@ import React from "react";
 import { useScore } from "../context/ScoreContext";
 import ReactSpeedometer from "react-d3-speedometer";
 
-function RiskProbBar() {
+function ScoreResult() {
 
     const { finalScore } = useScore();
 
@@ -12,7 +12,7 @@ function RiskProbBar() {
     if (finalScore < 3) {
         probTextResult = "Probabilidade da avaliação: Baixo";
         recommendationComponent = (
-            <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
+            <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Baixo</h1>
                 <p className="mt-2">Quando a criança obtém uma pontuação de 0 a 2 na escala M-CHAT, o risco de desenvolver o Transtorno do Espectro Autista (TEA) é considerado baixo. Nesses casos:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
@@ -25,7 +25,7 @@ function RiskProbBar() {
     } else if (finalScore < 8) {
         probTextResult = "Probabilidade da avaliação: Moderado";
         recommendationComponent = (
-            <div id="rec-text-moderado" className="bg-yellow-200 border border-yellow-600 text-yellow-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
+            <div id="rec-text-moderado" className="bg-yellow-200 border border-yellow-600 text-yellow-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Moderado</h1>
                 <p className="mt-2">Crianças que obtêm uma pontuação entre 3 e 7 se enquadram no grupo de risco moderado. Nesse cenário, é fundamental adotar algumas medidas importantes:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
@@ -38,7 +38,7 @@ function RiskProbBar() {
     } else {
         probTextResult = "Probabilidade da avaliação: Alto";
         recommendationComponent = (
-            <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-900 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
+            <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Alto</h1>
                 <p className="mt-2">Pontuações entre 8 e 20 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
@@ -63,4 +63,4 @@ function RiskProbBar() {
     );
 }
 
-export default RiskProbBar;
+export default ScoreResult;

@@ -31,7 +31,7 @@ function Termos() {
                 <ul className="list-decimal ml-4">
                     <div>
                         <li>Realizar o registro inicial, colocando os dados solicitados e login com conta google;</li>
-                        {/* adicionar imagens para representação */}
+                        {/* adicionar imagens pra representação */}
                     </div>
                     <div>
                         <li>Responder às perguntas marcando para cada uma sim ou não, certifique-se de responder todas;</li>
