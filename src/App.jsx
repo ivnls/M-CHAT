@@ -11,12 +11,14 @@ import CathAllPage from './pages/CathAllPage';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import { DateProvider } from './context/DateContext';
+import ScrollToTop from './components/ScrollToTop';
 
 
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
       <main className='flex-1'>
         <RegProvider>
           <ScoreProvider>

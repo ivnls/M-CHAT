@@ -17,9 +17,6 @@ function TemplateAvaliacao() {
     const { conclusionDate } = useDate();
 
     const perguntasArray = Object.values(perguntas);
-    console.log(perguntasArray)
-    console.log("typeof respostas: " + typeof(respostas));
-    console.log("typeof perguntas: " + typeof(perguntas));
 
     const valorCriticas = Object.values(finalCriticas);
     const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
@@ -67,9 +64,6 @@ function TemplateAvaliacao() {
             </div>
         );
     }
-
-    console.log("DEBUG: O valor de finalCriticas é:", finalCriticas);
-    console.log("DEBUG: O TIPO de finalCriticas é:", typeof finalCriticas);
 
     return (
 

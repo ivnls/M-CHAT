@@ -26,7 +26,6 @@ function AnsForm() {
 
     // esta função atualiza o estado local.
     const handleRespostaChange = (indexPergunta, valorResposta) => {
-        console.log(valorResposta);
        
         setRespostasAtuais(respostasAnteriores => ({
             ...respostasAnteriores,
@@ -83,7 +82,6 @@ function AnsForm() {
         const finalizationDate = new Date().toLocaleString("pt-BR");
         const respostasFinais = perguntasArray.map((_, index) => respostasAtuais[index]);
 
-        console.log("Contagem final de críticas:", contagemCriticas);
 
 
         setScore(scoreCalculado);
