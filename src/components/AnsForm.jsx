@@ -98,7 +98,7 @@ function AnsForm() {
         <>  
             <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl m-4 lg:m-8 px-4 py-8 lg:px-4 lg:py-10 lg:max-w-5xl lg:mx-auto" >
                 <div className="bg-gray-300 p-4 text-center mb-3 rounded-md font-medium">
-                    <p>Por favor, preencha as questões abaixo sobre como seu filho geralmente é. Por favor, tente responder todas as
+                    <p>Por favor, preencha as questões abaixo sobre como seu filho geralmente é. Por favor, tente responder todas as 23
                     questões. Caso o comportamento na questão seja raro (ex. você só observou uma ou duas vezes), por favor, responda
                     como se seu filho não fizesse o comportamento.</p>
                 </div>
@@ -118,12 +118,19 @@ function AnsForm() {
                         <div 
                             key={item.index}
                             id={`container-q${index}`} 
-                            className="flex flex-col lg:flex-row items-center justify-start gap-6 pl-4 p-4 mb-3 rounded-lg shadow-sm border" 
-                            style={{ backgroundColor: corDeFundo, borderColor: erros[index] ? 'red' : '#E5E7EB' }} // Adicionado highlight de erro na borda
+                            className="flex flex-col lg:flex-row items-center justify-start gap-2 lg:gap-4 pl-4 p-4 mb-3 rounded-lg shadow-sm border" 
+                            style={{ backgroundColor: corDeFundo, borderColor: erros[index] ? 'red' : '#E5E7EB' }}
                         >
+
+                            <p className="font-semibold order-first mr-auto">
+                                {index+1}
+                            </p>
+
                             <span className="text-center text-base font-normal flex-1 lg:text-start lg:order-first">
                                 {item.pergunta}
                             </span>
+                            
+
 
                             <div className="flex items-center gap-4 lg:order-last">
                                 <input 
@@ -146,6 +153,7 @@ function AnsForm() {
                                 />
                                 <label htmlFor={`q${index}-false`} className="text-red-600 font-medium cursor-pointer">Não</label>
                             </div>
+
                             <div>
                                 {erros[index] && (
                                     <p className="text-red-600 font-semibold mt-1 text-center lg:text-right lg:order-last">
