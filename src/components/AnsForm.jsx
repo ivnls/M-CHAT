@@ -3,57 +3,95 @@ import perguntas from "./db/perguntas.json";
 import { useNavigate } from "react-router-dom";
 import Aviso from "./Aviso";
 import { useScore } from "../context/ScoreContext";
+import { useDate } from "../context/DateContext";
 
 function AnsForm() {
 
-    const { setScore, setConclusionDate } = useScore();
-
+    const { setScore, setCriticas, setRespostas } = useScore();
+    const { setConclusionDate } = useDate();
     const navigate = useNavigate();
-                                            //{ 0: true, 1: false, ...}
-    const [respostas, setRespostas] = useState({});
+
+    const perguntasArray = Object.values(perguntas);
+
+    const [respostasAtuais, setRespostasAtuais] = useState({});
     const [erros, setErros] = useState({});
 
+    //Grupos de Críticas
+    const gruposCriticas = {
+        A: [0, 1],
+        B: [6],
+        C: [8],
+        D: [12, 13, 14]
+    };
+
+    // esta função atualiza o estado local.
     const handleRespostaChange = (indexPergunta, valorResposta) => {
-        setRespostas(respostasAnteriores => ({
-            ...respostasAnteriores, //isso cria uma cópia da lista antes da pergunta que foi respondida no chamado desta função
-            [indexPergunta]: valorResposta //isso insere o valor
+        console.log(valorResposta);
+       
+        setRespostasAtuais(respostasAnteriores => ({
+            ...respostasAnteriores,
+            [indexPergunta]: valorResposta
         }));
-    }
+        // limpa o erro da pergunta ao ser respondida
+        if (erros[indexPergunta]) {
+            setErros(prevErros => {
+                const novosErros = { ...prevErros };
+                delete novosErros[indexPergunta];
+                return novosErros;
+            });
+        }
+    };
 
     // questionário enviado
     const envioQuestionario = (event) => {
         event.preventDefault();
 
-        const finalizationDate = new Date().toLocaleString("pt-BR");
-    
-        const perguntasNaoRespondidas = [];
-        for (let i = 0; i < perguntas.length; i++) {
-            if (respostas[i] === undefined) {
-                perguntasNaoRespondidas.push(i);
+        const novosErros = {};
+        perguntasArray.forEach((pergunta, index) => {
+            if (respostasAtuais[index] === undefined) {
+                novosErros[index] = true;
             }
-        }
-    
-        if (perguntasNaoRespondidas.length > 0) {
-            const novosErros = {};
-            perguntasNaoRespondidas.forEach(index => {
-                novosErros[index] = true; 
-            });
+        });
+
+        if (Object.keys(novosErros).length > 0) {
             setErros(novosErros);
+            alert("Por favor, responda todas as perguntas antes de continuar.");
             return;
         }
-    
-        //se tudo foi respondido limpa os erros e continua
-        setErros({});
-    
-        let resNotEqual = 0;
-        perguntas.forEach((perguntaOriginal, index) => {
-            if (respostas[index] !== perguntaOriginal.resposta) {
-                resNotEqual++;
+
+        setErros({}); // Limpa os erros
+
+        const contagemCriticas = { A: 0, B: 0, C: 0, D: 0 };
+        let scoreCalculado = 0;
+
+        perguntasArray.forEach((pergunta, index) => {
+            const respostaUsuario = respostasAtuais[index];
+
+            if (respostaUsuario === pergunta.resposta) {
+                scoreCalculado++;
+            }
+
+            if (!respostaUsuario) {
+                for (const grupo in gruposCriticas) {
+                    if (gruposCriticas[grupo].includes(index)) {
+                        contagemCriticas[grupo]++;
+                        break;
+                    }
+                }
             }
         });
         
+        const finalizationDate = new Date().toLocaleString("pt-BR");
+        const respostasFinais = perguntasArray.map((_, index) => respostasAtuais[index]);
+
+        console.log("Contagem final de críticas:", contagemCriticas);
+
+
+        setScore(scoreCalculado);
+        setRespostas(respostasFinais);
+        setCriticas(contagemCriticas);
         setConclusionDate(finalizationDate);
-        setScore(resNotEqual);
+
         navigate("/resultado");
     };
     
@@ -65,44 +103,54 @@ function AnsForm() {
                     questões. Caso o comportamento na questão seja raro (ex. você só observou uma ou duas vezes), por favor, responda
                     como se seu filho não fizesse o comportamento.</p>
                 </div>
-                {perguntas.map((item, index) => {
+                
+                {perguntasArray.map((item, index) => {
 
-                    //cores de fundo conforme a resposta
-                    let corDeFundo = 'white';
-                    if (respostas[index] === true) {
-                        corDeFundo = '#C7FFCA';
-                    } else if (respostas[index] === false) {
-                        corDeFundo = '#FFD1C7';
+                    const respostaAtual = respostasAtuais[index];
+
+                    let corDeFundo = '#FFFFFF';
+                    if (respostaAtual === true) {
+                        corDeFundo = '#EBF9EB';
+                    } else if (respostaAtual === false) {
+                        corDeFundo = '#FBEBEB';
                     }
 
                     return (
-                        <div key={index} id={`container-q${index}`} className="flex flex-col lg:flex-row items-center justify-start gap-6 pl-4 p-4 mb-3 rounded-lg shadow-sm border border-gray-200" style={{backgroundColor: corDeFundo}}>
+                        <div 
+                            key={item.index}
+                            id={`container-q${index}`} 
+                            className="flex flex-col lg:flex-row items-center justify-start gap-6 pl-4 p-4 mb-3 rounded-lg shadow-sm border" 
+                            style={{ backgroundColor: corDeFundo, borderColor: erros[index] ? 'red' : '#E5E7EB' }} // Adicionado highlight de erro na borda
+                        >
+                            <span className="text-center text-base font-normal flex-1 lg:text-start lg:order-first">
+                                {item.pergunta}
+                            </span>
 
-                            <span className="text-center text-base font-normal flex-1 lg:text-start lg:order-first">{item.pergunta}</span>
+                            <div className="flex items-center gap-4 lg:order-last">
+                                <input 
+                                    onChange={() => handleRespostaChange(index, true)}
+                                    checked={respostaAtual === true}
+                                    id={`q${index}-true`}
+                                    type="radio"
+                                    name={`q${index}`}
+                                    className="true-checkbox w-5 h-5 accent-green-600" 
+                                />
+                                <label htmlFor={`q${index}-true`} className="text-green-600 font-medium cursor-pointer">Sim</label>
 
-                            <div className ="flex items-center gap-4 lg:order-last">
-                                <input onChange={() => handleRespostaChange(index, true)}
-                                checked={respostas[index] === true}
-                                id={`q${index}-true`}
-                                type="radio"
-                                name={`q${index}`}
-                                className="true-checkbox w-5 h-5 accent-green-600" />
-                                <label className="text-green-600 font-medium cursor-pointer">Sim</label>
-
-                                <input onChange={() => handleRespostaChange(index, false)}
-                                checked=  {respostas[index] === false}
-                                id={`q${index}-false`} 
-                                type="radio"
-                                name={`q${index}`}
-                                className="red-checkbox w-5 h-5 accent-red-600" />
-                                <label className="text-red-600 font-medium cursor-pointer">Não</label>
+                                <input 
+                                    onChange={() => handleRespostaChange(index, false)}
+                                    checked={respostaAtual === false}
+                                    id={`q${index}-false`} 
+                                    type="radio"
+                                    name={`q${index}`}
+                                    className="red-checkbox w-5 h-5 accent-red-600"
+                                />
+                                <label htmlFor={`q${index}-false`} className="text-red-600 font-medium cursor-pointer">Não</label>
                             </div>
 
-                            
-
                             {erros[index] && (
-                                <p className="text-red-800 bg-red-300 py-4 px-1 rounded-lg">
-                                    Responda à pergunta
+                                <p className="text-red-600 text-xs mt-1 w-full text-center lg:text-right lg:order-last">
+                                    Por favor, responda esta pergunta.
                                 </p>
                             )}
                         </div>

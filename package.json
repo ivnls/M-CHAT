@@ -8,9 +8,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && cp dist/index.html dist/200.html && surge dist/ mchat-lab.surge.sh"
+    "deploy": "npm run build && copy dist\\index.html dist\\200.html && surge dist/ mchat-lab.surge.sh"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
+    "jwt-decode": "^4.0.0",
     "react": "^19.0.0",
     "react-d3-speedometer": "^3.1.1",
     "react-dom": "^19.0.0",
