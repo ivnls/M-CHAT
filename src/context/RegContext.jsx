@@ -9,19 +9,22 @@ export const RegProvider = ({ children }) => {
     const [nomeCrianca, setNomeCrianca] = useState(sessionStorage.getItem('nomeCrianca_mchat') || null);
     const [idade, setIdade] = useState(sessionStorage.getItem('idade_mchat') || null);
     const [sexo, setSexo] = useState(sessionStorage.getItem('sexo_mchat') || null);
+    const [email, setEmail] = useState(sessionStorage.getItem('email_mchat') || null);
 
-    const registrar = ({ nomeMae, nomeCrianca, idade, sexo }) => {
+    const registrar = ({ nomeMae, nomeCrianca, idade, sexo, email }) => {
         //atualizar o estado no react
         setNomeMae(nomeMae);
         setNomeCrianca(nomeCrianca);
         setIdade(idade);
         setSexo(sexo);
+        setEmail(email);
 
         //salvar no sessionstorafe
         sessionStorage.setItem('nomeMae_mchat', nomeMae);
         sessionStorage.setItem('nomeCrianca_mchat', nomeCrianca);
         sessionStorage.setItem('idade_mchat', idade);
         sessionStorage.setItem('sexo_mchat', sexo);
+        sessionStorage.setItem('email_mchat', email);
     };
 
     const resetReg = () => {
@@ -30,12 +33,14 @@ export const RegProvider = ({ children }) => {
         setNomeCrianca(null);
         setIdade(null);
         setSexo(null);
+        setEmail(null);
         
         //remover do sessionstorage
         sessionStorage.removeItem('nomeMae_mchat');
         sessionStorage.removeItem('nomeCrianca_mchat');
         sessionStorage.removeItem('idade_mchat');
         sessionStorage.removeItem('sexo_mchat');
+        sessionStorage.removeItem('email_mchat');
     };
 
     const valor = {
@@ -43,6 +48,7 @@ export const RegProvider = ({ children }) => {
         nomeCrianca,
         idade,
         sexo,
+        email,
         registrar,
         resetReg,
     };

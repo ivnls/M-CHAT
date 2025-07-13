@@ -10,6 +10,8 @@ import TermosPage from "./pages/TermosPage";
 import CathAllPage from './pages/CathAllPage';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import { DateProvider } from './context/DateContext';
+import TemplateAvaliacao from './components/TemplateAvaliacao';
 
 
 
@@ -19,25 +21,29 @@ function App() {
       <main className='flex-1'>
         <RegProvider>
           <ScoreProvider>
-            <Routes>
-              <Route path="/" element={<RegForm />} />
-              
-              <Route path="/questionario" 
-              element={
-              <ProtectedRoute>
-              <QuestionarioPage />
-              </ProtectedRoute>} />
+            <DateProvider>
+              <Routes>
+                <Route path="/" element={<RegForm />} />
+                
+                <Route path="/questionario" 
+                element={
+                <ProtectedRoute>
+                <QuestionarioPage />
+                </ProtectedRoute>} />
 
-              <Route path="/resultado"
-              element={
-              <ProtectedRoute>
-              <ResultadoPage />
-              </ProtectedRoute>} />
+                <Route path="/resultado"
+                element={
+                <ProtectedRoute>
+                <ResultadoPage />
+                </ProtectedRoute>} />
 
-              <Route path="/termos" element={<TermosPage />} />
+                <Route path="/termos" element={<TermosPage />} />
 
-              <Route path="*" element={<CathAllPage />} />
-            </Routes>
+                <Route path="/aaa" element={<TemplateAvaliacao />} />
+
+                <Route path="*" element={<CathAllPage />} />
+              </Routes>
+            </DateProvider>
           </ScoreProvider>
         </RegProvider>
       </main>
