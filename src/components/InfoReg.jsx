@@ -19,7 +19,7 @@ function InfoReg() {
     return(
         <div id="dadosConsulta" className="bg-gray-300 text-center rounded-xl py-4 px-4 m-4 shadow-md lg:mx-auto">
             <h2 className="text-lg font-bold">Dados da Avaliação</h2>
-            <div className="flex flex-row gap-5 py-2 text-justify">
+            <div className="flex flex-row gap-5 py-2 text-left">
                 <div>
                     <p id="nomeMae" className="">Nome da Mãe: {nomeMae}<span className="font-normal"></span></p>
                     <p id="nomeCrianca" className="">Nome da Criança: {nomeCrianca}<span className="font-normal"></span></p>
