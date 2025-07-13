@@ -11,7 +11,6 @@ import CathAllPage from './pages/CathAllPage';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import { DateProvider } from './context/DateContext';
-import TemplateAvaliacao from './components/TemplateAvaliacao';
 
 
 
@@ -38,8 +37,6 @@ function App() {
                 </ProtectedRoute>} />
 
                 <Route path="/termos" element={<TermosPage />} />
-
-                <Route path="/aaa" element={<TemplateAvaliacao />} />
 
                 <Route path="*" element={<CathAllPage />} />
               </Routes>
