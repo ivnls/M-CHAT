@@ -120,7 +120,7 @@ function AnsForm() {
                             style={{ backgroundColor: corDeFundo, borderColor: erros[index] ? 'red' : '#E5E7EB' }}
                         >
 
-                            <p className="font-semibold order-first mr-auto">
+                            <p className="font-thin order-first mr-auto">
                                 {index+1}
                             </p>
 
