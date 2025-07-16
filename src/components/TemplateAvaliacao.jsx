@@ -24,7 +24,7 @@ function TemplateAvaliacao() {
     let probTextResult = "";
     let recommendationComponent = null;
 
-    if (finalScore < 3) {
+    if (finalScore < 3 && somaTotalCriticas < 2) {
         probTextResult = "Probabilidade da avaliação: Baixo";
         recommendationComponent = (
             <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
@@ -37,7 +37,7 @@ function TemplateAvaliacao() {
                 </ul>
             </div>
         );
-    } else if (finalScore < 8) {
+    } else if (finalScore < 8 && somaTotalCriticas < 2) {
         probTextResult = "Probabilidade da avaliação: Moderado";
         recommendationComponent = (
             <div id="rec-text-moderado" className="bg-yellow-200 border border-yellow-600 text-yellow-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
