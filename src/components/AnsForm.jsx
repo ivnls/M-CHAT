@@ -18,7 +18,7 @@ function AnsForm() {
 
     //Grupos de Críticas
     const gruposCriticas = {
-        A: [0, 1],
+        A: [1],
         B: [6],
         C: [8],
         D: [12, 13, 14]
