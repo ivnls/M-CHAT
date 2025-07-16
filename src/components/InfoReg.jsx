@@ -14,7 +14,7 @@ function InfoReg() {
         );
     }
 
-    const { nomeMae, nomeCrianca, idade, sexo, email } = useReg();
+    const { nomeMae, nomeCrianca, idade, sexo } = useReg(); //incluir email
 
     return(
         <div id="dadosConsulta" className="bg-gray-300 text-center rounded-xl py-4 px-4 m-4 shadow-md lg:mx-auto">
@@ -29,7 +29,7 @@ function InfoReg() {
                     <p id="sexo" className="">Sexo: {sexo}<span className="font-normal"></span></p>
                 </div>
             </div>
-            <p id="email">Email: {email}<span className="font-normal"></span></p>
+            {/* <p id="email">Email: {email}<span className="font-normal"></span></p> */}
             {finalDate}
         </div>
     );

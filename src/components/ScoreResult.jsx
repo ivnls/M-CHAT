@@ -4,12 +4,15 @@ import ReactSpeedometer from "react-d3-speedometer";
 
 function ScoreResult() {
 
-    const { finalScore } = useScore();
+    const { finalScore, finalCriticas } = useScore();
 
     let probTextResult = "";
     let recommendationComponent = null;
 
-    if (finalScore < 3) {
+    const valorCriticas = Object.values(finalCriticas);
+    const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
+
+    if (finalScore < 3 && somaTotalCriticas <= 2) {
         probTextResult = "Probabilidade da avaliação: Baixo";
         recommendationComponent = (
             <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
@@ -22,7 +25,7 @@ function ScoreResult() {
                 </ul>
             </div>
         );
-    } else if (finalScore < 8) {
+    } else if (finalScore < 8 && somaTotalCriticas <= 2) {
         probTextResult = "Probabilidade da avaliação: Moderado";
         recommendationComponent = (
             <div id="rec-text-moderado" className="bg-yellow-200 border border-yellow-600 text-yellow-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
@@ -40,9 +43,9 @@ function ScoreResult() {
         recommendationComponent = (
             <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Alto</h1>
-                <p className="mt-2">Pontuações entre 8 e 20 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
+                <p className="mt-2">Pontuações entre 8 e 20 ou questões críticas maior que 2 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
-                    <li>É essencial agendar uma consulta com um especialista, como um neurologista pediátrico ou psiquiatra infantil.</li>
+                    <li>É essencial agendar uma consulta com um neurologista pediátrico ou psiquiatra infantil.</li>
                     <li>O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
                     <li>Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>
                 </ul>

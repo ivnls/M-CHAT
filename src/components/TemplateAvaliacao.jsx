@@ -12,7 +12,7 @@ import teacolheLogo from "../assets/teacolhe-logo.svg";
 import labIdeias from "../assets/lab-ideias.svg"
 
 function TemplateAvaliacao() {
-    const { nomeMae, nomeCrianca, idade, sexo, email } = useReg();
+    const { nomeMae, nomeCrianca, idade, sexo } = useReg(); //incluir email
     const { finalScore, respostas, finalCriticas } = useScore();
     const { conclusionDate } = useDate();
 
@@ -55,9 +55,9 @@ function TemplateAvaliacao() {
         recommendationComponent = (
             <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-950 px-4 py-4 rounded-lg mx-20 transition-opacity duration-500 ease-in-out text-justify">
                 <h1 className="font-bold text-lg">Risco Alto</h1>
-                <p className="mt-2">Pontuações entre 8 e 20 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
+                <p className="mt-2">Pontuações entre 8 e 20 ou questões críticas maior que 2 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
                 <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-red-300 rounded-md pb-4">É essencial agendar uma consulta com um especialista, como um neurologista pediátrico ou psiquiatra infantil.</li>
+                    <li className="bg-red-300 rounded-md pb-4">É essencial agendar uma consulta com um neurologista pediátrico ou psiquiatra infantil.</li>
                     <li className="bg-red-300 rounded-md pb-4">O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
                     <li className="bg-red-300 rounded-md pb-4">Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>
                 </ul>
@@ -88,7 +88,7 @@ function TemplateAvaliacao() {
             <p><strong>Nome da Criança:</strong> {nomeCrianca}</p>
             <p><strong>Idade (meses):</strong> {idade}</p>
             <p><strong>Sexo:</strong> {sexo}</p>
-            <p><strong>Email:</strong> {email}</p>
+            {/*<p><strong>Email:</strong> {email}</p>*/}
           </div>
         </div>
 
@@ -124,16 +124,16 @@ function TemplateAvaliacao() {
           <h3 className="text-lg font-semibold  text-gray-700">Resultado Final da Análise</h3>
           <div className="p-5 shadow-md rounded-md">
             <div className="flex felx-row justify-center gap-2 text-lg">
-              <h4 className="font-semibold">Críticas:</h4>
+              <h4 className="font-semibold">Pontuação críticas:</h4>
               <span className="font-bold">{somaTotalCriticas}</span>
-            </div>
-            {Object.entries(finalCriticas).map(([grupo, contagem]) => (
-                <span key={grupo} className="font-semibold text-lg pr-2">
-                    Grupo {grupo}: <span className="font-bold text-blue-600">{contagem}</span>
-                </span>
-            ))}
-          </div>
-  
+                </div>
+                {/*
+                  {Object.entries(finalCriticas).map(([grupo, contagem]) => (
+                      <span key={grupo} className="font-semibold text-lg pr-2">
+                          Grupo {grupo}: <span className="font-bold text-blue-600">{contagem}</span>
+                      </span>
+                ))} */}
+                </div>
           <p className="text-xl pt-2 pb-8 mx-auto font-semibold">Score: {finalScore}</p>
 
           {recommendationComponent}

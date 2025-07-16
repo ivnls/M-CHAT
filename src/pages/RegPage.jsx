@@ -29,16 +29,16 @@ function RegForm() {
     const [nomeCrianca, setNomeCrianca] = useState("");
     const [idade, setIdade] = useState("");
     const [sexo, setSexo] = useState("Masculino");
-    const [email, setEmail] = useState("");
+    // const [email, setEmail] = useState("");
 
     //erros
     const [erroIdade, setErroIdade] = useState("");
     const [erroTermos, setErroTermos] = useState("");
     const [erroNomeMae, setErroNomeMae] = useState("");
     const [erroNomeCrianca, setErroNomeCrianca] = useState("");
-    const [erroContaGoogle, setErroContaGoogle] = useState("");
+    // const [erroContaGoogle, setErroContaGoogle] = useState("");
 
-    const [emailVerificado, setEmailVerificado] = useState(false);
+    // const [emailVerificado, setEmailVerificado] = useState(false);
 
     //só para guardar os dados do formulário em localStorages
     const EnvioDoFormulario = (event) => {
@@ -81,10 +81,10 @@ function RegForm() {
             setErroNomeCrianca("");
         }
 
-        if (!emailVerificado) {
+        /*if (!emailVerificado) {
             setErroContaGoogle("Por favor, faça login com uma conta google.")
             e++;
-        }
+        }*/
 
         if (e > 0) {
             return;
@@ -95,13 +95,13 @@ function RegForm() {
         setIdade(idade);
         setSexo(sexo);
 
-        registrar({ nomeMae, nomeCrianca, idade, sexo, email });
+        registrar({ nomeMae, nomeCrianca, idade, sexo }); //incluir email caso em uso
 
         navigate('/questionario');
     }
 
 
-    const ValidacaoGmail = (credenciais) => {
+    /*const ValidacaoGmail = (credenciais) => {
         const credenciaisDec = jwtDecode(credenciais.credential);
         if (credenciaisDec.email_verified) {
             setEmailVerificado(true);
@@ -111,7 +111,7 @@ function RegForm() {
             erroContaGoogle("Por favor, use outra conta google.")
         }
         
-    }
+    }*/
 
     return (
         <>
@@ -156,6 +156,7 @@ function RegForm() {
             <option value="Feminino">Feminino</option>
         </select>
 
+        {/*
         <label className="block mt-4 mb-2 font-medium">Login com Google</label>
         <div className={emailVerificado ? "hidden" : "visible flex justify-center"}>
             <GoogleLogin theme="filled_blue" shape="pill" text="continue_with" width="280" onSuccess={ValidacaoGmail} />
@@ -169,6 +170,7 @@ function RegForm() {
             </div>
 
         <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroContaGoogle}</p>
+        */}
 
         <button type="submit" className="mt-6 px-10 bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Registrar</button>
         </form>

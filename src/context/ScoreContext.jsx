@@ -19,6 +19,7 @@ export const ScoreProvider = ({ children }) => {
         }
     };
 
+    //talvez pode ser útil dividir em grupos
     const getInitialCriticas = () => {
         const savedCriticas = sessionStorage.getItem('criticas_mchat');
         
