@@ -43,9 +43,9 @@ function ScoreResult() {
         recommendationComponent = (
             <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Alto</h1>
-                <p className="mt-2">Pontuações entre 8 e 20 ou questões críticas maiores que 1 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
+                <p className="mt-2">Pontuações entre 8 e 25 ou questões críticas maiores que 1 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
                 <ul className="list-disc list-inside mt-2 space-y-1">
-                    <li>É essencial agendar uma consulta com um neurologista pediátrico ou psiquiatra infantil.</li>
+                    <li>É essencial agendar uma consulta.</li>
                     <li>O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
                     <li>Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>
                 </ul>
@@ -58,7 +58,7 @@ function ScoreResult() {
             <p id="prob-text" className="text-white text-lg font-medium mt-4 text-center">{probTextResult}</p>
             
             <div className="mx-auto pt-8">
-                <ReactSpeedometer minValue={0} maxValue={20} height={250} width={300} value={finalScore} segments={10} startColor="#00AA00" endColor="#FF0000" valueTextFontSize={20} needleColor="#aed6f1"/>
+                <ReactSpeedometer minValue={0} maxValue={25} height={250} width={300} value={finalScore} segments={5} startColor="#00AA00" endColor="#FF0000" valueTextFontSize={20} needleColor="#aed6f1"/>
             </div>
 
             {recommendationComponent}
