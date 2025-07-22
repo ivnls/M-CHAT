@@ -31,9 +31,9 @@ function TemplateAvaliacao() {
                 <h1 className="font-bold text-lg">Risco Baixo</h1>
                 <p className="mt-2">Quando a criança obtém uma pontuação de 0 a 2 na escala M-CHAT, o risco de desenvolver o Transtorno do Espectro Autista (TEA) é considerado baixo. Nesses casos:</p>
                 <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-green-300 rounded-md pb-4">É improvável que a criança desenvolva autismo.</li>
-                    <li className="bg-green-300 rounded-md pb-4">Não há necessidade de medidas de intervenção imediata.</li>
-                    <li className="bg-green-300 rounded-md pb-4">Caso a criança tenha menos de 24 meses, recomenda-se repetir o teste em uma etapa futura, pois o desenvolvimento infantil pode apresentar variações ao longo do tempo.</li>
+                    <li className="bg-green-300 rounded-md pb-4 px-2">É improvável que a criança desenvolva autismo.</li>
+                    <li className="bg-green-300 rounded-md pb-4 px-2">Não há necessidade de medidas de intervenção imediata.</li>
+                    <li className="bg-green-300 rounded-md pb-4 px-2">Caso a criança tenha menos de 24 meses, recomenda-se repetir o teste em uma etapa futura, pois o desenvolvimento infantil pode apresentar variações ao longo do tempo.</li>
                 </ul>
             </div>
         );
@@ -44,9 +44,9 @@ function TemplateAvaliacao() {
                 <h1 className="font-bold text-lg">Risco Moderado</h1>
                 <p className="mt-2">Crianças que obtêm uma pontuação entre 3 e 7 se enquadram no grupo de risco moderado. Nesse cenário, é fundamental adotar algumas medidas importantes:</p>
                 <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-yellow-300 rounded-md pb-4">Realizar uma coleta minuciosa da história da criança, observando detalhadamente o início e a evolução de sintomas que possam indicar autismo.</li>
-                    <li className="bg-yellow-300 rounded-md pb-4">Avaliar atentamente os comportamentos observados no dia a dia, como interações sociais, comunicação e comportamentos repetitivos.</li>
-                    <li className="bg-yellow-300 rounded-md pb-4">Dependendo da avaliação inicial, pode ser indicada uma reavaliação com um especialista para confirmação diagnóstica.</li>
+                    <li className="bg-yellow-300 rounded-md pb-4 px-2">Realizar uma coleta minuciosa da história da criança, observando detalhadamente o início e a evolução de sintomas que possam indicar autismo.</li>
+                    <li className="bg-yellow-300 rounded-md pb-4 px-2">Avaliar atentamente os comportamentos observados no dia a dia, como interações sociais, comunicação e comportamentos repetitivos.</li>
+                    <li className="bg-yellow-300 rounded-md pb-4 px-2">Dependendo da avaliação inicial, pode ser indicada uma reavaliação com um especialista para confirmação diagnóstica.</li>
                 </ul>
             </div>
         );
@@ -57,9 +57,9 @@ function TemplateAvaliacao() {
                 <h1 className="font-bold text-lg">Risco Alto</h1>
                 <p className="mt-2">Pontuações entre 8 e 25 ou questões críticas maiores que 1 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
                 <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-red-300 rounded-md pb-4">É essencial agendar uma consulta.</li>
-                    <li className="bg-red-300 rounded-md pb-4">O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
-                    <li className="bg-red-300 rounded-md pb-4">Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>
+                    <li className="bg-red-300 rounded-md pb-4 px-2">É essencial agendar uma consulta.</li>
+                    <li className="bg-red-300 rounded-md pb-4 px-2">O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
+                    <li className="bg-red-300 rounded-md pb-4 px-2">Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>
                 </ul>
             </div>
         );
