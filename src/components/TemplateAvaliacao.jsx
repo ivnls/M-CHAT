@@ -10,6 +10,7 @@ import ifrsLogo from "../assets/ifrs-logo.svg";
 import altoFelizBrasao from "../assets/altofelizbrasao.svg";
 import teacolheLogo from "../assets/teacolhe-logo.svg";
 import labIdeias from "../assets/lab-ideias.svg"
+import ReturnRecCom from "./ReturnRecCom";
 
 function TemplateAvaliacao() {
     const { nomeMae, nomeCrianca, idade, sexo } = useReg(); //incluir email
@@ -21,53 +22,7 @@ function TemplateAvaliacao() {
     const valorCriticas = Object.values(finalCriticas);
     const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
 
-    let probTextResult = "";
-    let recommendationComponent = null;
-
-    if (finalScore < 3 && somaTotalCriticas < 2) {
-        probTextResult = "Probabilidade da avaliação: Baixo";
-        recommendationComponent = (
-            <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
-                <h1 className="font-bold text-lg">Risco Baixo</h1>
-                <p className="mt-2">Quando a criança obtém uma pontuação de 0 a 2 na escala M-CHAT, o risco de desenvolver o Transtorno do Espectro Autista (TEA) é considerado baixo. Nesses casos:</p>
-                <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-green-300 rounded-md pb-4 px-2">É improvável que a criança desenvolva autismo.</li>
-                    <li className="bg-green-300 rounded-md pb-4 px-2">Não há necessidade de medidas de intervenção imediata.</li>
-                    <li className="bg-green-300 rounded-md pb-4 px-2">Caso a criança tenha menos de 24 meses, recomenda-se repetir o teste em uma etapa futura, pois o desenvolvimento infantil pode apresentar variações ao longo do tempo.</li>
-                </ul>
-            </div>
-        );
-    } else if (finalScore < 8 && somaTotalCriticas < 2) {
-        probTextResult = "Probabilidade da avaliação: Moderado";
-        recommendationComponent = (
-            <div id="rec-text-moderado" className="bg-yellow-200 border border-yellow-600 text-yellow-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
-                <h1 className="font-bold text-lg">Risco Moderado</h1>
-                <p className="mt-2">Crianças que obtêm uma pontuação entre 3 e 7 se enquadram no grupo de risco moderado. Nesse cenário, é fundamental adotar algumas medidas importantes:</p>
-                <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-yellow-300 rounded-md pb-4 px-2">Realizar uma coleta minuciosa da história da criança, observando detalhadamente o início e a evolução de sintomas que possam indicar autismo.</li>
-                    <li className="bg-yellow-300 rounded-md pb-4 px-2">Avaliar atentamente os comportamentos observados no dia a dia, como interações sociais, comunicação e comportamentos repetitivos.</li>
-                    <li className="bg-yellow-300 rounded-md pb-4 px-2">Dependendo da avaliação inicial, pode ser indicada uma reavaliação com um especialista para confirmação diagnóstica.</li>
-                </ul>
-            </div>
-        );
-    } else {
-        probTextResult = "Probabilidade da avaliação: Alto";
-        recommendationComponent = (
-            <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-950 px-4 py-4 rounded-lg mx-20 transition-opacity duration-500 ease-in-out text-justify">
-                <h1 className="font-bold text-lg">Risco Alto</h1>
-                <p className="mt-2">Pontuações entre 8 e 25 ou questões críticas maiores que 1 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
-                <ul className="list-inside mt-2 space-y-1">
-                    <li className="bg-red-300 rounded-md pb-4 px-2">É essencial agendar uma consulta.</li>
-                    <li className="bg-red-300 rounded-md pb-4 px-2">O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
-                    <li className="bg-red-300 rounded-md pb-4 px-2">Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>
-                </ul>
-            </div>
-        );
-    }
-
     return (
-
-    
     <div className="p-4 bg-white shadow-lg w-[210mm]">
       <header className="flex items-center justify-between border-b-2 border-gray-200">
         <div>
@@ -126,17 +81,11 @@ function TemplateAvaliacao() {
             <div className="flex felx-row justify-center gap-2 text-lg">
               <h4 className="font-semibold">Pontuação crítica:</h4>
               <span className="font-bold">{somaTotalCriticas}</span>
-                </div>
-                {/*
-                  {Object.entries(finalCriticas).map(([grupo, contagem]) => (
-                      <span key={grupo} className="font-semibold text-lg pr-2">
-                          Grupo {grupo}: <span className="font-bold text-blue-600">{contagem}</span>
-                      </span>
-                ))} */}
-                </div>
+            </div>
+          </div>    
           <p className="text-xl pt-2 pb-8 mx-auto font-semibold">Score: {finalScore}</p>
 
-          {recommendationComponent}
+          <ReturnRecCom finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
         </div>
         
       </main>
