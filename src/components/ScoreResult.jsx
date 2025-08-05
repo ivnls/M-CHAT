@@ -16,7 +16,7 @@ function ScoreResult() {
             <div className="flex flex-col">
                 <ReturnProbText finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
 
-                <div className="flex mx-auto gap-10 my-10 align-middle">
+                <div className="flex flex-col lg:flex-row mx-auto gap-10 my-10 align-middle">
                     <div className="py-2 px-4 mt-8 bg-gray-200 rounded-xl text-black items-center">
                         <p id="prob-text" className="text-lg font-medium mt-4 text-center mb-4">
                             Score Final: {finalScore}

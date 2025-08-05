@@ -18,7 +18,7 @@ function InfoReg() {
     const { nomeMae, nomeCrianca, idade, sexo } = useReg(); //incluir email
 
     return(
-        <div id="dadosConsulta" className="bg-gray-300 text-center rounded-xl py-4 px-4 m-4 shadow-md lg:mx-auto">
+        <div id="dadosConsulta" className="bg-gray-300 text-center rounded-xl py-4 px-4 m-4 shadow-md max-w-md mx-auto">
             <h2 className="text-lg font-bold">Dados da Avaliação</h2>
             <div className="flex flex-row gap-5 py-2 text-left">
                 <div>
