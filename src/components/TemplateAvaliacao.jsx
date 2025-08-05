@@ -32,7 +32,7 @@ function TemplateAvaliacao() {
         </div>
         
         <div className="text-right">
-          <h1 className="text-3xl font-bold text-gray-800">Resultado da avaliação M-CHAT</h1>
+          <h1 className="text-3xl font-bold text-gray-800">Resultado da avaliação M-CHAT DIGITAL</h1>
           <p className="text-sm text-gray-500 mt-1">Data de Emissão: {conclusionDate}</p>
         </div>
       </header>
@@ -100,7 +100,7 @@ function TemplateAvaliacao() {
           <img src={teacolheLogo} className="h-10 w-auto" alt="Logo do TECAcolhe" /> 
           <img src={labIdeias} className="h-14 w-auto" alt="Logo do Laboratório de Ideias" />
         </div>
-        <p>Este é um relatório gerado automaticamente. © MCHAT {new Date().getFullYear()}</p>
+        <p>Este é um relatório gerado automaticamente. © MCHAT DIGITAL {new Date().getFullYear()}</p>
       </footer>
 
     </div>

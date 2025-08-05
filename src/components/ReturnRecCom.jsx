@@ -32,7 +32,7 @@ function ReturnRecCom({ finalScore, somaTotalCriticas }) {
             <div id="rec-text-alto" className="bg-red-200 border border-red-600 text-red-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Alto</h1>
                 <p className="mt-2">Pontuações entre 8 e 25 ou questões críticas maiores que 1 indicam um alto risco de Transtorno do Espectro Autista. Diante dessa situação:</p>
-                <ul className="list-inside mt-2 space-y-1">
+                <ul className="list-disc list-inside mt-2 space-y-1">
                     <li>É essencial agendar uma consulta médica.</li>
                     <li>O profissional irá realizar uma avaliação detalhada para confirmar ou descartar o diagnóstico de autismo.</li>
                     <li>Caso confirme-se o diagnóstico, indica-se o tratamento mais adequado, considerando as necessidades específicas da criança.</li>

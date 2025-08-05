@@ -98,7 +98,7 @@ function AnsForm() {
         <>  
             <form onSubmit={envioQuestionario} className="flex flex-col justify-center bg-gray-200 shadow-md rounded-xl m-4 lg:m-8 px-4 py-8 lg:px-4 lg:py-4 lg:max-w-5xl lg:mx-auto" >
                 <div className="bg-gray-300 p-4 text-center mb-3 rounded-md font-medium">
-                    <p>Por favor, preencha as questões abaixo sobre como seu filho geralmente é. Por favor, tente responder todas as 23
+                    <p>Por favor, preencha as questões abaixo sobre como seu filho geralmente é. Por favor responda todas as 23
                     questões. Caso o comportamento na questão seja raro (ex. você só observou uma ou duas vezes), por favor, responda
                     como se seu filho não fizesse o comportamento.</p>
                 </div>
@@ -164,8 +164,6 @@ function AnsForm() {
                         </div>
                     );
                 })}
-
-                <Aviso />
 
                 <button type="submit" className="my-4 px-4 mx-auto bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-md transition">Concluir</button>
 

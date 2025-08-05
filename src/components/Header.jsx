@@ -13,7 +13,7 @@ function Header({ subtitle }) {
             <div className="flex flex-row items-center gap-5 lg:py-8 pl-6 pt-4">
                 <img src={logo} className="h-20 lg:h-28 w-auto" alt="Logo M-CHAT" />
                 <div className="flex flex-col">
-                    <h1 className="text-xl lg:text-2xl font-bold">M-CHAT</h1>
+                    <h1 className="text-xl lg:text-2xl font-bold">M-CHAT DIGITAL</h1>
                     <p>{subtitle}</p>
                 </div>
             </div>
