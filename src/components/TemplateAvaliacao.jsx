@@ -2,15 +2,17 @@ import React from "react";
 import { useReg } from "../context/RegContext";
 import { useScore } from "../context/ScoreContext";
 import { useDate } from "../context/DateContext";
-import perguntas from "./db/perguntas.json";
 
+import ReturnRecCom from "./ReturnRecCom";
+
+import perguntas from "./db/perguntas.json";
 import logo from "../assets/logo.svg";
 import susLogo from "../assets/sus-logo.svg";
 import ifrsLogo from "../assets/ifrs-logo.svg";
 import altoFelizBrasao from "../assets/altofelizbrasao.svg";
 import teacolheLogo from "../assets/teacolhe-logo.svg";
 import labIdeias from "../assets/lab-ideias.svg"
-import ReturnRecCom from "./ReturnRecCom";
+
 
 function TemplateAvaliacao() {
     const { nomeMae, nomeCrianca, idade, sexo } = useReg(); //incluir email
@@ -75,7 +77,7 @@ function TemplateAvaliacao() {
             </tbody>
         </table>
 
-        <div className="mt-4 text-center p-3 bg-gray-100 rounded-lg">
+        <div className="my-8 p-3 text-center bg-gray-100 rounded-lg">
           <h3 className="text-lg font-semibold  text-gray-700">Resultado Final da Análise</h3>
           <div className="p-5 shadow-md rounded-md">
             <div className="flex felx-row justify-center gap-2 text-lg">
@@ -84,9 +86,9 @@ function TemplateAvaliacao() {
             </div>
           </div>    
           <p className="text-xl pt-2 pb-8 mx-auto font-semibold">Score: {finalScore}</p>
-
-          <ReturnRecCom finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
         </div>
+
+        <ReturnRecCom finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
         
       </main>
 

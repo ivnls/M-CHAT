@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
+
 import { useReg } from '../context/RegContext';
 import { useScore } from "../context/ScoreContext";
 

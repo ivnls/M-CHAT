@@ -1,4 +1,5 @@
 import React from "react";
+
 import labIdeias from "../assets/lab-ideias.svg"
 
 function Footer() {

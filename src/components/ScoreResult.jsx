@@ -14,10 +14,14 @@ function ScoreResult() {
     return (
         <div className="flex flex-col">
             <ReturnProbText finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
-            
+
             <div className="mx-auto pt-8">
                 <ReactSpeedometer minValue={0} maxValue={25} height={250} width={300} value={finalScore} segments={5} startColor="#00AA00" endColor="#FF0000" valueTextFontSize={20} needleColor="#aed6f1"/>
             </div>
+
+            <p id="prob-text" className="text-white text-lg font-medium mt-4 text-center mb-4">
+                Pontuação Crítica: {somaTotalCriticas}
+            </p>
 
             <ReturnRecCom finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
         </div>

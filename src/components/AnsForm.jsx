@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import perguntas from "./db/perguntas.json";
 import { useNavigate } from "react-router-dom";
+
+import perguntas from "./db/perguntas.json";
+
 import Aviso from "./Aviso";
 import { useScore } from "../context/ScoreContext";
 import { useDate } from "../context/DateContext";
@@ -165,7 +167,7 @@ function AnsForm() {
 
                 <Aviso />
 
-                <button type="submit" className="my-4 px-4 mx-auto bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Concluir</button>
+                <button type="submit" className="my-4 px-4 mx-auto bg-blue-700 hover:bg-blue-800 text-white p-2 rounded-md transition">Concluir</button>
 
             </form>
         </>
