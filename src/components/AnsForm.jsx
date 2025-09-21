@@ -84,8 +84,6 @@ function AnsForm() {
         const finalizationDate = new Date().toLocaleString("pt-BR");
         const respostasFinais = perguntasArray.map((_, index) => respostasAtuais[index]);
 
-
-
         setScore(scoreCalculado);
         setRespostas(respostasFinais);
         setCriticas(contagemCriticas);

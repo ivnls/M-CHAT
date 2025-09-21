@@ -13,9 +13,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { DateProvider } from './context/DateContext';
 import ScrollToTop from './components/ScrollToTop';
 
-
-
 function App() {
+
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
