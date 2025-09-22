@@ -1,6 +1,6 @@
 import React from "react";
 
-function ReturnRecCom({ finalScore, somaTotalCriticas }) {
+function ReturnRecCom({finalScore, somaTotalCriticas}) {
 
     if (finalScore < 3 && somaTotalCriticas < 2) {
         probTextResult = "Probabilidade da avaliação: Baixo";

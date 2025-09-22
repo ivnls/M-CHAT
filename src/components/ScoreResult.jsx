@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useScore } from "../context/ScoreContext";
 import ReactSpeedometer from "react-d3-speedometer";
 import { calculateRiskLevel } from "../utils/RiskCalculator";
+import ReturnRecCom from "../utils/ReturnRecCom";
 import { supabase } from "../utils/supaBaseClient";
 
 function ScoreResult() {
@@ -10,18 +11,24 @@ function ScoreResult() {
     const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
 
     const [carregando, setCarregando] = useState(true);
-    const [saveAttempted, setSaveAttempted] = useState(false);
 
     const resultado = calculateRiskLevel(finalScore, somaTotalCriticas);
 
     useEffect(() => {
         const saveResult = async () => {
-            if (saveAttempted || finalScore === null || finalScore === undefined) {
+            if (finalScore === null || finalScore === undefined) {
+                setCarregando(false);
+                return;
+            }
+
+            const isAlreadySaved = sessionStorage.getItem('resultSaved');
+            if (isAlreadySaved) {
+                setCarregando(false);
                 return;
             }
 
             try {
-                const { data, error } = await supabase
+                const { error } = await supabase
                     .from('Resultados')
                     .insert([
                         { 
@@ -36,6 +43,8 @@ function ScoreResult() {
                     throw error;
                 }
 
+                sessionStorage.setItem('resultSaved', 'true');
+
             } catch (error) {
                 console.error("Erro ao salvar o resultado:", error);
             } finally {
@@ -45,7 +54,7 @@ function ScoreResult() {
 
         saveResult();
 
-    }, []);
+    }, [finalScore, somaTotalCriticas, resultado, respostas]);
 
 
     return (
@@ -65,9 +74,11 @@ function ScoreResult() {
                     </div>
                 </div>
 
-                <p id="prob-text" className="text-white text-lg font-medium mt-4 text-center">
-                    {resultado}
+                <p id="prob-text" className="text-white text-lg font-medium my-8 text-center">
+                    Risco {resultado}
                 </p>
+
+                <ReturnRecCom finalScore={finalScore} somaTotalCriticas={somaTotalCriticas} />
             
             </div>
         </>

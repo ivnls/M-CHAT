@@ -3,7 +3,7 @@ import { useReg } from "../context/RegContext";
 import { useScore } from "../context/ScoreContext";
 import { useDate } from "../context/DateContext";
 
-import ReturnRecCom from "./ReturnRecCom";
+import ReturnRecCom from "../utils/ReturnRecCom";
 
 import perguntas from "./db/perguntas.json";
 import logo from "../assets/logo.svg";

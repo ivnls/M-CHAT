@@ -30,7 +30,6 @@ function InfoReg() {
                     <p id="sexo" className="">Sexo: {sexo}<span className="font-normal"></span></p>
                 </div>
             </div>
-            {/* <p id="email">Email: {email}<span className="font-normal"></span></p> */}
             {finalDate}
         </div>
     );

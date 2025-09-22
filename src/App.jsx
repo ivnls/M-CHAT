@@ -9,9 +9,9 @@ import ResultadoPage from "./pages/ResultadoPage";
 import TermosPage from "./pages/TermosPage";
 import CathAllPage from './pages/CathAllPage';
 import Footer from './components/Footer';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './utils/ProtectedRoute';
 import { DateProvider } from './context/DateContext';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
 
