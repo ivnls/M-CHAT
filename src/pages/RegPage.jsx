@@ -37,9 +37,6 @@ function RegForm() {
     const [erroNomeCrianca, setErroNomeCrianca] = useState("");
     const [erroCaptcha, setErroCaptcha] = useState("");
 
-    //Quando algum erro de input ocorre
-    const [erro, setErro] = useState(false);
-
     //Captcha
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
     const captchaRef = useRef(null);
@@ -49,17 +46,18 @@ function RegForm() {
     const EnvioDoFormulario = (event) => {
         event.preventDefault();
         
+        let e = 0;
         //Verificação de inputs
         if(!termos) {
             setErroTermos("Você deve ler e aceitar os Termos.");
-            setErro(true);
+            e++;
         } else {
             setErroTermos("");
         }
 
         if (idade < 16 || idade > 30) {
             setErroIdade("A criança deve ter de 16 a 30 meses.");
-            setErro(true);
+            e++;
         } else {
             setErroIdade("");
         }
@@ -67,34 +65,34 @@ function RegForm() {
         // /\d/ -> procura numeros em uma string
         if (/\d/.test(nomeMae)) {
             setErroNomeMae("Digite um nome válido.");
-            setErro(true);
+            e++;
         } else if (!nomeMae.includes(" ")) {
             setErroNomeMae("Digite o nome completo.");
-            setErro(true);
+            e++;
         } else {
             setErroNomeMae("");
         }
 
         if (/\d/.test(nomeCrianca)) {
             setErroNomeCrianca("Digite um nome válido.");
-            setErro(true);
+            e++;
         } else if (!nomeCrianca.includes(" ")) {
             setErroNomeCrianca("Digite o nome completo.");
-            setErro(true);
+            e++;
         } else {
             setErroNomeCrianca("");
         }
 
         if (!isCaptchaVerified) {
-            setErro(true);
             setErroCaptcha("Por favor, conclua o Captcha");
+            e++;
         } else {
             captchaRef.current.reset();
             setIsCaptchaVerified(false);
             setErroCaptcha("");
         }
 
-        if (erro) {
+        if (e > 0) {
             return;
         }
 
