@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useScore } from "../context/ScoreContext";
+import { useReg } from "../context/RegContext";
 import ReactSpeedometer from "react-d3-speedometer";
 import { calculateRiskLevel } from "../utils/RiskCalculator";
 import ReturnRecCom from "../utils/ReturnRecCom";
@@ -7,6 +8,7 @@ import { supabase } from "../utils/supaBaseClient";
 
 function ScoreResult() {
     const { finalScore, finalCriticas, respostas } = useScore();
+    const { idade, cidade } = useReg();
     const valorCriticas = Object.values(finalCriticas);
     const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
 
@@ -35,7 +37,9 @@ function ScoreResult() {
                             score: finalScore,
                             criticas: somaTotalCriticas,
                             resultado: resultado,
-                            respostas: respostas
+                            respostas: respostas,
+                            idade: idade,
+                            cidade: cidade
                         } 
                     ]);
 

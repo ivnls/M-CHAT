@@ -5,6 +5,7 @@ import { useReg } from "../context/RegContext";
 import { useScore } from "../context/ScoreContext";
 import { useDate } from "../context/DateContext";
 import ReCAPTCHA from 'react-google-recaptcha';
+import cidades from "../components/db/cidades.json"
 
 function RegForm() {
 
@@ -28,6 +29,7 @@ function RegForm() {
     const [nomeMae, setNomeMae] = useState("");
     const [nomeCrianca, setNomeCrianca] = useState("");
     const [idade, setIdade] = useState("");
+    const [cidade, setCidade] = useState("");
     const [sexo, setSexo] = useState("Masculino");
 
     //Strings dos erros
@@ -100,8 +102,9 @@ function RegForm() {
         setNomeCrianca(nomeCrianca);
         setIdade(idade);
         setSexo(sexo);
+        setCidade(cidade);
 
-        registrar({ nomeMae, nomeCrianca, idade, sexo }); //incluir email caso em uso
+        registrar({ nomeMae, nomeCrianca, idade, sexo, cidade }); //incluir email caso em uso
 
         navigate('/questionario');
     }
@@ -153,6 +156,15 @@ function RegForm() {
             <select value={sexo} onChange={(e) => {setSexo(e.target.value)}} id="sexo" className="bg-white w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none">
                 <option value="Masculino">Masculino</option>
                 <option value="Feminino">Feminino</option>
+            </select>
+
+            <label className="block mt-4 mb-2 font-medium">Cidade</label>
+            <select value={cidade} onChange={(e) => {setCidade(e.target.value)}} id="cidade" className="bg-white w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none">
+                {cidades.map(cidade => (
+                    <option key={cidade.cidade}>
+                        {cidade.cidade}
+                    </option>
+                ))}
             </select>
 
             <div className="w-full flex justify-center mt-4">
