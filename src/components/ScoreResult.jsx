@@ -8,7 +8,7 @@ import { supabase } from "../utils/supaBaseClient";
 
 function ScoreResult() {
     const { finalScore, finalCriticas, respostas } = useScore();
-    const { idade, cidade } = useReg();
+    const { idade, cidade, sexo } = useReg();
     const valorCriticas = Object.values(finalCriticas);
     const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
 
@@ -39,7 +39,8 @@ function ScoreResult() {
                             resultado: resultado,
                             respostas: respostas,
                             idade: idade,
-                            cidade: cidade
+                            cidade: cidade,
+                            sexo: sexo
                         } 
                     ]);
 
