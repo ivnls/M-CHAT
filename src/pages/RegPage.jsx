@@ -159,10 +159,19 @@ function RegForm() {
             </select>
 
             <label className="block mt-4 mb-2 font-medium">Cidade</label>
-            <select value={cidade} onChange={(e) => {setCidade(e.target.value)}} id="cidade" className="bg-white w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none">
-                {cidades.map(cidade => (
-                    <option key={cidade.cidade}>
-                        {cidade.cidade}
+            <select
+                id="cidade"
+                value={cidade}
+                onChange={(e) => setCidade(e.target.value)}
+                className="bg-white w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+            >
+                <option value="" disabled>
+                    Selecione uma cidade
+                </option>
+
+                {cidades.map(item => (
+                    <option key={item.cidade} value={item.cidade}>
+                        {item.cidade}
                     </option>
                 ))}
             </select>
