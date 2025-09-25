@@ -38,6 +38,7 @@ function RegForm() {
     const [erroNomeMae, setErroNomeMae] = useState("");
     const [erroNomeCrianca, setErroNomeCrianca] = useState("");
     const [erroCaptcha, setErroCaptcha] = useState("");
+    const [erroCidade, setErroCidade] = useState("");
 
     //Captcha
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
@@ -83,6 +84,11 @@ function RegForm() {
             e++;
         } else {
             setErroNomeCrianca("");
+        }
+
+        if(cidade === null || cidade === "") {
+            setErroCidade("Selecione uma cidade.");
+            e++;
         }
 
         if (!isCaptchaVerified) {
@@ -175,6 +181,7 @@ function RegForm() {
                     </option>
                 ))}
             </select>
+            <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroCidade}</p>
 
             <div className="w-full flex justify-center mt-4">
                 <ReCAPTCHA
