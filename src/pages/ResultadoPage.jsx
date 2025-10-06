@@ -19,21 +19,21 @@ function ResultadoPage() {
         const input = document.getElementById('pdf');
 
         setTimeout(() => {
-            html2canvas(input, { scale: 4 })
+            html2canvas(input, { scale: 2 })
             .then((canvas) => {
-                const imgData = canvas.toDataURL('image/png');
-                
+                const imgData = canvas.toDataURL('image/jpeg', 0.8); //0.8 valor da compressao
+                // usando essas configurações o pdf pesa 259KB
  
                 const pdf = new jsPDF('p', 'mm', 'a4');
                 
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
                 
-                pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
                 
                 pdf.save('avaliacao-mchat.pdf');
             });
-        }, 600) //atraso para carregar fontes e svgs
+        }, 600) //atraso para carregar
     };
 
     return(

@@ -7,13 +7,14 @@ import { useDate } from "../context/DateContext";
 import ReCAPTCHA from 'react-google-recaptcha';
 import cidades from "../components/db/cidades.json"
 
+import { supabase } from "../utils/supaBaseClient";
+
 function RegForm() {
 
     const navigate = useNavigate();
     const { registrar, resetReg } = useReg();
     const { resetScore } = useScore();
     const { resetDate } = useDate();
-
 
     useEffect(() => {
         // limpar dados do registro anterior
