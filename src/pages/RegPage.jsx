@@ -92,7 +92,7 @@ function RegForm() {
             e++;
         }
 
-        if (!isCaptchaVerified) {
+        /*if (!isCaptchaVerified) {
             setErroCaptcha("Por favor, conclua o Captcha");
             e++;
         } else {
@@ -100,7 +100,7 @@ function RegForm() {
             setIsCaptchaVerified(false);
             setErroCaptcha("");
         }
-
+*/
         if (e > 0) {
             return;
         }
@@ -184,13 +184,13 @@ function RegForm() {
             </select>
             <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroCidade}</p>
 
-            <div className="w-full flex justify-center mt-4">
+            {/*<div className="w-full flex justify-center mt-4">
                 <ReCAPTCHA
                 ref={captchaRef}
                 sitekey={import.meta.env.VITE_RECAP_KEY}
                 onChange={handleCaptchaChange}
                 />
-            </div>
+            </div>*/}
             <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroCaptcha}</p>
 
             <button type="submit" className="mt-6 px-10 bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Registrar</button>
