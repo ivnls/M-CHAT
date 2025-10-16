@@ -146,7 +146,7 @@ function RegForm() {
 
             <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroTermos}</p>
 
-            <label className="block mb-2 font-medium">Nome da Mãe</label>
+            <label className="block mb-2 font-medium">Nome Completo da Mãe</label>
             <input onChange={(e) => {setNomeMae(e.target.value)}} type="text" id="nomeMae" className="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none" required></input>
             <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroNomeMae}</p>
 
