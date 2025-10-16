@@ -6,7 +6,6 @@ import { useScore } from "../context/ScoreContext";
 import { useDate } from "../context/DateContext";
 import ReCAPTCHA from 'react-google-recaptcha';
 import cidades from "../components/db/cidades.json"
-import RelatorioResultados from "../components/RelatorioPCidade";
 
 import { supabase } from "../utils/supaBaseClient";
 
