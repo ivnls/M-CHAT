@@ -22,12 +22,16 @@ function InfoReg() {
             <h2 className="text-lg font-bold">Dados da Avaliação</h2>
             <div className="flex flex-row gap-5 py-2 text-left">
                 <div>
-                    <p id="nomeMae" className="">Nome da Mãe: {nomeMae}<span className="font-normal"></span></p>
-                    <p id="nomeCrianca" className="">Nome da Criança: {nomeCrianca}<span className="font-normal"></span></p>
+                    <p id="nomeMae" className="font-semibold">Nome da Mãe: </p>
+                    <span className="font-normal">{nomeMae}</span>
+                    <p id="nomeCrianca" className="font-semibold">Nome da Criança: </p>
+                    <span className="font-normal">{nomeCrianca}</span>
                 </div>
                 <div>
-                    <p id="idade" className="">Idade (Meses): {idade}<span className="font-normal"></span></p>
-                    <p id="sexo" className="">Sexo: {sexo}<span className="font-normal"></span></p>
+                    <p id="idade" className="font-semibold">Idade (Meses): </p>
+                    <span className="font-normal">{idade}</span>
+                    <p id="sexo" className="font-semibold">Sexo: </p>
+                    <span className="font-normal">{sexo}</span>
                 </div>
             </div>
             {finalDate}
