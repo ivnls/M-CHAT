@@ -3,7 +3,6 @@ import React from "react";
 function ReturnRecCom({finalScore, somaTotalCriticas}) {
 
     if (finalScore < 3 && somaTotalCriticas < 2) {
-        probTextResult = "Probabilidade da avaliação: Baixo";
         return (
             <div id="rec-text-baixo" className="bg-green-200 border border-green-600 text-green-950 px-8 py-8 rounded-lg mx-8 transition-opacity duration-500 ease-in-out">
                 <h1 className="font-bold text-lg">Risco Baixo</h1>
