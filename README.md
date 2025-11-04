@@ -1,18 +1,16 @@
+# M-CHAT DIGITAL
 
-# MCHAT-WEB
+<img src="/src/assets/logo.svg" width="100px;" alt="M-CHAT Digital Logo"/>
 
-Identificação de casos suspeitos de autismo em crianças de 16-30 meses nas escolas de
-educação infantil com o objetivo de realizar as intervenções de forma precocemente , evitando que a
-criança perca a melhor fase de estimulação e desenvolvimento. O projeto vai ser direcionado através
-do M-CHAT informatizado como ferramenta de rastreio para se fazer um trabalho que priorize a
-estimulação precoce nos primeiros meses de vida.
-
-Pode ser usado por qualquer pessoa que possua alguma suspeita, basta responder o questionário e obter recomendações com base nas respostas.
-
-Como na maioria dos testes de rastreio poderá existir um grande número de falsos positivos, indicando que nem todas as crianças que constam neste questionário irão ser diagnosticadas com esta perturbação. No entanto estes resultados podem apontar para a existência de outras anomalias do desenvolvimento, sendo por isso necessária a avaliação por profissionais desta área.
+O Transtorno do Espectro Autista (TEA) é uma condição classificada no DSM-5 como Transtornos de Neurodesenvolvimento, recebendo o nome de Transtornos do Espectro Autista, definido como um distúrbio do desenvolvimento neurológico, presente desde a infância, apresentando déficits nas dimensões sócio-comunicativa e comportamental (APA, 2013).
+A identificação de sinais de atrasos no desenvolvimento facilita o diagnóstico de TEA e encaminhamentos para intervenções na idade mais precoce possível, pode levar a melhores resultados em longo prazo, considerando a neuroplasticidade cerebral nos primeiros anos de vida.
 
 
-## Contribuidores
+## Objetivos da ferramenta
+
+Agilizar o rastreio de possíveis pacientes com indicativos de TEA nos primeiros meses de vida, automatizar o cálculo de risco para os especialistas, eliminando o trabalho manual de correção e criar uma base de dados anonimizada com base nas respostas para futuras análises e aprimoramento.
+
+## Contribuição
 
 <table>
   <tr>
@@ -33,8 +31,7 @@ Como na maioria dos testes de rastreio poderá existir um grande número de fals
   </tr>
 </table>
 
-
-## Exemplo
+## Teste do Questionário
 
 https://m-chat-seven.vercel.app/
 
