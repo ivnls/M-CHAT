@@ -11,7 +11,7 @@ function Header({ subtitle }) {
         <header className="flex flex-col lg:flex-row w-full items-center justify-between gap-10 border-b-8 rounded-b-3xl bg-gradient-to-t from-blue-950 to-cyan-600 border-slate-800 text-white">
             
             <div className="flex flex-col items-center lg:py-3 pl-6 pt-4">
-                <img src={logo} className="h-20 m-2 lg:h-32 w-auto" alt="Logo M-CHAT" />
+                <img src={logo} className="h-32 lg:m-2 w-auto" alt="Logo M-CHAT" />
             </div>
 
             <div className="flex flex-row items-center gap-5 px-5 pb-4">
