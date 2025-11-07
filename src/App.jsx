@@ -12,12 +12,17 @@ import Footer from './components/Footer';
 import ProtectedRoute from './utils/ProtectedRoute';
 import { DateProvider } from './context/DateContext';
 import ScrollToTop from './utils/ScrollToTop';
+import AdminPage from './pages/AdminPage';
+import Header from './components/Header';
 
 function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
       <ScrollToTop />
+
+      <Header />
+
       <main className='flex-1'>
         <RegProvider>
           <ScoreProvider>
@@ -38,6 +43,11 @@ function App() {
                 </ProtectedRoute>} />
 
                 <Route path="/termos" element={<TermosPage />} />
+
+                <Route path="/admin" 
+                element={
+                    <AdminPage />
+                } />
 
                 <Route path="*" element={<CathAllPage />} />
               </Routes>

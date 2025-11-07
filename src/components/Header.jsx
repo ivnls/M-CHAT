@@ -6,7 +6,7 @@ import ifrsLogo from "../assets/ifrs-logo.svg";
 import altoFelizBrasao from "../assets/altofelizbrasao.svg";
 import teacolheLogo from "../assets/teacolhe-logo.svg";
 
-function Header({ subtitle }) {
+function Header() {
     return (
         <header className="flex flex-col lg:flex-row w-full items-center justify-between gap-10 border-b-8 rounded-b-3xl bg-gradient-to-t from-blue-950 to-cyan-600 border-slate-800 text-white">
             

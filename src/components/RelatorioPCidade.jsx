@@ -1,7 +1,26 @@
-// src/components/RelatorioResultados.jsx (bom renomear o arquivo também)
-
 import { useEffect, useState } from 'react';
-import { supabase } from '../utils/supaBaseClient'; // Verifique o caminho para seu cliente Supabase
+import { supabase } from '../utils/supaBaseClient';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import { color } from 'chart.js/helpers';
+
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 function RelatorioResultados() {
   const [dados, setDados] = useState([]);
@@ -13,7 +32,6 @@ function RelatorioResultados() {
       try {
         setLoading(true);
         
-        // MUDANÇA 1: Chamando a função correta que acabamos de corrigir.
         const { data, error } = await supabase.rpc('relatorio_resultado_por_cidade');
 
         if (error) {
@@ -40,34 +58,77 @@ function RelatorioResultados() {
     return <p className='text-red-600'>Erro ao carregar: {error}</p>;
   }
 
-  return (
-    // MUDANÇA 2: Atualizando a tabela para exibir os novos dados.
-    <div className='mx-auto max-w-xl'>
-      <h2 className='text-center text-2xl bg-gray-300 border border-black'>Distribuição de Resultados por Cidade</h2>
-      <table className='w-full border-collapse'>
-        <thead>
-          <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th className='p-8 border border-black'>Cidade</th>
-            <th className='p-8 border border-black'>Baixo</th>
-            <th className='p-8 border border-black'>Médio</th>
-            <th className='p-8 border border-black'>Alto</th>
-            <th className='p-8 border border-black'>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {dados.map((item) => (
-            <tr className='text-white' key={item.cidade}>
-              <td className='px-8 py-2 border border-black'>{item.cidade}</td>
-              <td className='px-8 py-2 border border-black'>{item.total_baixo}</td>
-              <td className='px-8 py-2 border border-black'>{item.total_medio}</td>
-              <td className='px-8 py-2 border border-black'>{item.total_alto}</td>
-              <td className='px-8 py-2 border border-black'>{item.total_geral}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+  const options = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          color: '#999999', // NOVO: Cor das linhas do grid Y
+        },
+        ticks: {
+          color: '#999999' // NOVO: Cor dos números do eixo Y (opcional)
+        }
+      },
+      x: { // NOVO: Adicionei a configuração do eixo X
+        grid: {
+          color: '#999999', // NOVO: Cor das linhas do grid X
+        },
+        ticks: {
+          color: '#CCCCCC' // NOVO: Cor das cidades no eixo X (opcional)
+        }
+      }
+    },
+
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Gráfico de Casos de TEA',
+        color: '#FFFFFF',
+      },
+    },
+  };
+
+  const data = {
+    // Correção 1: Sem colchetes extras
+    labels: dados.map(item => item.cidade), 
+    datasets: [
+      {
+        label: 'Casos de TEA p/ cidade',
+        data: dados.map(item => item.total_geral), 
+        borderWidth: 1,
+        backgroundColor: '#0000FF', // Adicionei uma cor
+      },
+
+      {
+        label: 'Risco baixo p/ cidade',
+        data: dados.map(item => item.total_baixo),
+        borderWidth: 1,
+        backgroundColor: '#00FF00',
+      },
+
+      {
+        label: 'Risco medio p/ cidade',
+        data: dados.map(item => item.total_medio),
+        borderWidth: 1,
+        backgroundColor: '#FFFF00',
+      },
+
+      {
+        label: 'Risco alto p/ cidade',
+        data: dados.map(item => item.total_alto),
+        borderWidth: 1,
+        backgroundColor: '#FF0000',
+      }
+      
+    ],
+  }
+
+  return <Bar options={options} data={data} />
 }
+
 
 export default RelatorioResultados;

@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import ScoreResult from "../components/ScoreResult";
-import Header from "../components/Header";
 import Aviso from "../components/Aviso";
 import InfoReg from "../components/InfoReg"
 import jsPDF from 'jspdf';
@@ -38,7 +37,6 @@ function ResultadoPage() {
 
     return(
         <div className="flex flex-col"> 
-            <Header subtitle={"Resultado"} />
             <InfoReg final={dataFormatada} />
             <div className="m-2 lg:max-w-6xl lg:mx-auto">
                 <ScoreResult/>

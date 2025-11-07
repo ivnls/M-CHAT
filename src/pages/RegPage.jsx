@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import Header from "../components/Header";
 import { useReg } from "../context/RegContext";
 import { useScore } from "../context/ScoreContext";
 import { useDate } from "../context/DateContext";
@@ -94,14 +93,14 @@ function RegForm() {
             e++;
         }
 
-        if (!isCaptchaVerified) {
+        /*if (!isCaptchaVerified) {
             setErroCaptcha("Por favor, conclua o Captcha");
             e++;
         } else {
             captchaRef.current.reset();
             setIsCaptchaVerified(false);
             setErroCaptcha("");
-        }
+        }*/
 
         if (e > 0) {
             return;
@@ -126,8 +125,6 @@ function RegForm() {
 
     return (
         <>
-        
-        <Header subtitle={"Registro"} />
         <form onSubmit={EnvioDoFormulario} className="bg-gray-200 text-center rounded-xl p-4 my-8 mx-2 shadow-md lg:p-8 lg:mx-auto lg:max-w-xl">
 
             <h2 className="text-xl font-semibold mb-4 text-center">Registro</h2>
@@ -186,14 +183,14 @@ function RegForm() {
             </select>
             <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroCidade}</p>
 
-            <div className="w-full flex justify-center mt-4">
+            {/*<div className="w-full flex justify-center mt-4">
                 <ReCAPTCHA
                 ref={captchaRef}
                 sitekey={import.meta.env.VITE_RECAP_KEY}
                 onChange={handleCaptchaChange}
                 />
             </div>
-            <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroCaptcha}</p>
+            <p className="text-red-700 bg-red-200 rounded-md my-2 mx-4">{erroCaptcha}</p>*/}
 
             <button type="submit" className="mt-6 px-10 bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Registrar</button>
         </form>
