@@ -10,8 +10,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { color } from 'chart.js/helpers';
-
 
 ChartJS.register(
   CategoryScale,
@@ -83,10 +81,11 @@ function RelatorioResultados() {
     plugins: {
       legend: {
         position: 'top',
+        color: '#FFFFFF',
       },
       title: {
         display: true,
-        text: 'Gráfico de Casos de TEA',
+        text: 'Casos de TEA p/ cidade',
         color: '#FFFFFF',
       },
     },
@@ -97,37 +96,37 @@ function RelatorioResultados() {
     labels: dados.map(item => item.cidade), 
     datasets: [
       {
-        label: 'Casos de TEA p/ cidade',
+        label: 'Total de Casos',
         data: dados.map(item => item.total_geral), 
         borderWidth: 1,
-        backgroundColor: '#0000FF', // Adicionei uma cor
+        backgroundColor: '#0000BB', // Adicionei uma cor
       },
 
       {
-        label: 'Risco baixo p/ cidade',
+        label: 'Risco Baixo',
         data: dados.map(item => item.total_baixo),
         borderWidth: 1,
-        backgroundColor: '#00FF00',
+        backgroundColor: '#00BB00',
       },
 
       {
-        label: 'Risco medio p/ cidade',
+        label: 'Risco Médio',
         data: dados.map(item => item.total_medio),
         borderWidth: 1,
-        backgroundColor: '#FFFF00',
+        backgroundColor: '#BBBB00',
       },
 
       {
-        label: 'Risco alto p/ cidade',
+        label: 'Risco Alto',
         data: dados.map(item => item.total_alto),
         borderWidth: 1,
-        backgroundColor: '#FF0000',
+        backgroundColor: '#BB0000',
       }
       
     ],
   }
 
-  return <Bar options={options} data={data} />
+  return <Bar options={options} data={data} className='bg-slate-800 m-4 rounded-lg p-2'/>
 }
 
 
