@@ -62,18 +62,18 @@ function RelatorioResultados() {
       y: {
         beginAtZero: true,
         grid: {
-          color: '#999999', // NOVO: Cor das linhas do grid Y
+          color: '#999999',
         },
         ticks: {
-          color: '#999999' // NOVO: Cor dos números do eixo Y (opcional)
+          color: '#999999'
         }
       },
-      x: { // NOVO: Adicionei a configuração do eixo X
+      x: {
         grid: {
-          color: '#999999', // NOVO: Cor das linhas do grid X
+          color: '#999999',
         },
         ticks: {
-          color: '#CCCCCC' // NOVO: Cor das cidades no eixo X (opcional)
+          color: '#CCCCCC'
         }
       }
     },
@@ -92,14 +92,13 @@ function RelatorioResultados() {
   };
 
   const data = {
-    // Correção 1: Sem colchetes extras
     labels: dados.map(item => item.cidade), 
     datasets: [
       {
         label: 'Total de Casos',
         data: dados.map(item => item.total_geral), 
         borderWidth: 1,
-        backgroundColor: '#0000BB', // Adicionei uma cor
+        backgroundColor: '#0000BB',
       },
 
       {
