@@ -5,6 +5,7 @@ import susLogo from "../assets/sus-logo.svg";
 import ifrsLogo from "../assets/ifrs-logo.svg";
 import altoFelizBrasao from "../assets/altofelizbrasao.svg";
 import teacolheLogo from "../assets/teacolhe-logo.svg";
+import apaeFeliz from "../assets/apae.svg";
 
 function Header() {
     return (
@@ -18,6 +19,7 @@ function Header() {
                 <img src={susLogo} className="h-8 lg:h-16 w-auto " alt="Logo do SUS" />
                 <img src={ifrsLogo} className="h-14 lg:h-24 w-auto" alt="Logo do IFRS" />
                 <img src={altoFelizBrasao} className="h-10 lg:h-20 w-auto" alt="Brasão de Alto Feliz" />
+                <img src={apaeFeliz} className="h-10 lg:h-20 w-auto" alt="Logo da APAE de Feliz" /> 
                 <img src={teacolheLogo} className="h-10 lg:h-20 w-auto" alt="Logo do TECAcolhe" /> 
             </div>
 

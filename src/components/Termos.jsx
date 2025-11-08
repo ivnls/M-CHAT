@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { Component } from "react";
+import { redirect, useHref, useNavigate } from "react-router-dom";
 
 function Termos() {
 
@@ -7,6 +7,14 @@ function Termos() {
 
     function retorar() {
         navigate("/");
+    }
+
+    const openVid = () => {
+        window.open('https://youtube.com/shorts/d6uI9qcw4Cs', '_blank', 'noopener,noreferrer');
+    }
+
+    const openVid2 = () => {
+        window.open('https://youtu.be/KoQrETijeS8', '_blank', 'noopener,noreferrer');
     }
 
     return(
@@ -43,6 +51,21 @@ function Termos() {
                         <li>Baixe o PDF ou imprima o resultado clicando no botão ao final da página.</li>
                     </div>
                 </ul>
+
+                <p className="font-semibold pt-5">
+                    Tutoriais em vídeo:
+                </p>
+
+                <div className="flex gap-5"> 
+                    <button className="px-4 py-2 bg-yellow-300 hover:bg-yellow-400 rounded-md" onClick={openVid}>
+                        Como usar a ferramenta no celular
+                    </button>
+
+                    <button className="px-4 py-2 bg-green-300 hover:bg-green-400 rounded-md" onClick={openVid2}>
+                        Como usar a ferramenta no computador
+                    </button>
+                </div>
+
                 </div>
 
                 <button onClick={retorar} className="mt-2 px-4 mx-auto bg-blue-700 text-white p-2 rounded-md hover:bg-blue-800 transition">Voltar ao Cadastro</button>
