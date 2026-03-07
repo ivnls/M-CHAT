@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useScore } from "../context/ScoreContext";
 import { useReg } from "../context/RegContext";
 import ReactSpeedometer from "react-d3-speedometer";
@@ -13,15 +13,16 @@ function ScoreResult() {
     const somaTotalCriticas = valorCriticas.reduce((acumulador, valorAtual) => acumulador + valorAtual, 0);
 
     const [carregando, setCarregando] = useState(true);
+    const hasSaved = useRef(false);
 
     const resultado = calculateRiskLevel(finalScore, somaTotalCriticas);
-
     useEffect(() => {
         const saveResult = async () => {
-            if (finalScore === null || finalScore === undefined) {
-                setCarregando(false);
-                return;
-            }
+
+            if (hasSaved.current || sessionStorage.getItem('resultSaved')) return;
+            hasSaved.current = true;
+
+            if (!finalScore && finalScore !== 0) return; 
 
             const isAlreadySaved = sessionStorage.getItem('resultSaved');
             if (isAlreadySaved) {
@@ -31,7 +32,7 @@ function ScoreResult() {
 
             try {
                 const { error } = await supabase
-                    .from('Resultados')
+                    .from('avaliacoes')
                     .insert([
                         { 
                             score: finalScore,
@@ -44,14 +45,14 @@ function ScoreResult() {
                         } 
                     ]);
 
-                if (error) {
-                    throw error;
-                }
+                if (error) throw error;
 
                 sessionStorage.setItem('resultSaved', 'true');
+                console.log("Dados salvos com sucesso (LGPD Compliance)");
 
             } catch (error) {
-                console.error("Erro ao salvar o resultado:", error);
+                console.error("Erro ao salvar:", error.message);
+                hasSaved.current = false;
             } finally {
                 setCarregando(false);
             }
