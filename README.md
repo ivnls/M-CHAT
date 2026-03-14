@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/src/assets/logo.svg" width="100px;" alt="M-CHAT Digital Logo"/>
+  <img src="/src/assets/logo.svg" width="250px;" alt="M-CHAT Digital Logo"/>
 </p>
 
 <p align="center">
